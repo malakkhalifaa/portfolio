@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local restaurant Q&amp;A — Malak</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="terminal-window">
+    <header class="term-titlebar">
+      <div class="term-dots">
+        <span class="dot close"></span>
+        <span class="dot min"></span>
+        <span class="dot max"></span>
+      </div>
+      <span class="term-title">project: restaurant-local-qa — Malak</span>
+      <a href="index.html#projects" class="back-link term-back">← index</a>
+      <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
+    </header>
+
+    <main class="term-body">
+      <div class="term-content">
+        <div class="term-line">
+          <span class="prompt">malak@portfolio:~/projects$</span>
+          <span class="cmd">cat restaurant-qa/README.md</span>
+        </div>
+        <article class="project-detail project-detail-long">
+          <h1>Local AI agent: Restaurant Q&amp;A</h1>
+          <p class="project-meta">Python · Chroma · Ollama · LangChain · fully local (no cloud APIs)</p>
+
+          <div class="project-body">
+            <p>Ask questions about a pizza restaurant in plain English—answers from your own review data using a <strong>local</strong> vector DB (Chroma) and LLM (Ollama). <strong>No cloud APIs.</strong></p>
+
+            <h2>Intro</h2>
+            <p>This project is a <strong>fully local</strong> question-answering app for a pizza restaurant. You run it on your machine, point it at a CSV of reviews, and ask questions in plain English—<em>“How are the vegan options?”</em>, <em>“Is the crust good?”</em>, etc. The app uses <strong>Chroma</strong> to find the most relevant reviews and <strong>Ollama</strong> to turn them into clear, review-based answers. No API keys, no cloud—everything runs on your computer.</p>
+            <p><strong>In this page:</strong> what it does, how it works, setup, and how to run it.</p>
+
+            <h2>Screenshot</h2>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded>
+                <img
+                  src="https://github.com/user-attachments/assets/56ee28a6-a38c-4339-b77e-2a9d2bcba898"
+                  alt="Q&amp;A in action — asking about vegan options"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="675"
+                />
+              </span>
+              <figcaption class="img-caption">Q&amp;A in action — asking about vegan options</figcaption>
+            </figure>
+
+            <h2>What it does</h2>
+            <p>When you run the app you see:</p>
+            <pre><code>Ask your question (q to quit): How are the vegan options?</code></pre>
+            <p>The app then:</p>
+            <ol>
+              <li><strong>Searches</strong> the vector DB for reviews that best match your question (semantic search).</li>
+              <li><strong>Sends</strong> those reviews + your question to the local LLM (e.g. Llama 3.2).</li>
+              <li><strong>Prints</strong> an answer that summarizes and compares what the reviews say.</li>
+            </ol>
+            <p><strong>Example:</strong> For <em>“How are the vegan options?”</em> you might get a <em>“mixed bag”</em> summary—e.g. one review (2 stars) complaining about tasteless vegan cheese and coconut flavor, another (5 stars) praising the cashew cheese and fresh seasonal toppings, plus a note about an <em>“Experimental”</em> menu that may include vegan options. You get a balanced, review-based answer, not a single opinion.</p>
+            <p>Keep asking questions; type <strong><code>q</code></strong> to quit.</p>
+
+            <h2>How it works</h2>
+            <table class="project-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Step</th>
+                    <th scope="col">Where</th>
+                    <th scope="col">What happens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td><code>vector.py</code></td>
+                    <td>Load CSV, embed each review with Ollama (<code>mxbai-embed-large</code>).</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td><code>vector.py</code></td>
+                    <td>Store embeddings in <strong>Chroma</strong> under <code>./chrome_langchain_db</code> (reused on later runs).</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td><code>vector.py</code></td>
+                    <td>Expose a <strong>retriever</strong> that returns the <strong>top 5</strong> most relevant reviews per question.</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td><code>main.py</code></td>
+                    <td>Prompt: ask a question → retriever fetches reviews → LLM answers from those reviews only.</td>
+                  </tr>
+                </tbody>
+              </table>
+            <p><strong>Flow:</strong> <code>CSV → embeddings → Chroma → retriever → LLM → answer</code> — all on your machine.</p>
+
+            <h3>Chroma LangChain DB (the details)</h3>
+            <ul>
+              <li><strong>Where:</strong> <code>./chrome_langchain_db</code> (created on first run).</li>
+              <li><strong>When:</strong> First run: CSV → documents → embed → add to Chroma → save to disk. Later runs: connect to existing DB, no re-indexing.</li>
+              <li><strong>What’s stored:</strong> Collection <code>restaurant_reviews</code> with embedded text (title + review) and metadata (rating, date). The retriever uses this to find the top 5 matches for each question.</li>
+            </ul>
+
+            <h2>Setup</h2>
+            <ol>
+              <li>
+                <strong>Python 3.x</strong> and a virtual environment (recommended):
+                <pre><code>python -m venv venv
+venv\Scripts\activate   # Windows</code></pre>
+              </li>
+              <li>
+                <strong>Install dependencies:</strong>
+                <pre><code>pip install -r requirements.txt</code></pre>
+              </li>
+              <li>
+                <strong>Ollama</strong> installed and running. Pull the models:
+                <pre><code>ollama pull mxbai-embed-large
+ollama pull llama3.2</code></pre>
+              </li>
+              <li><strong>Data:</strong> Place your restaurant reviews CSV in the project root as <code>realistic_restaurant_reviews.csv</code>, with columns <strong>Title</strong>, <strong>Review</strong>, <strong>Rating</strong>, and <strong>Date</strong>.</li>
+            </ol>
+
+            <h2>Run</h2>
+            <pre><code>python main.py</code></pre>
+            <p>Type your questions at the prompt; type <strong><code>q</code></strong> to exit.</p>
+
+            <h2>Project layout</h2>
+            <table class="project-table">
+              <thead>
+                <tr>
+                  <th scope="col">File / folder</th>
+                  <th scope="col">Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>main.py</code></td>
+                  <td>Interactive loop: question → retriever → LLM → answer</td>
+                </tr>
+                <tr>
+                  <td><code>vector.py</code></td>
+                  <td>Load CSV, build/load Chroma index, expose retriever</td>
+                </tr>
+                <tr>
+                  <td><code>realistic_restaurant_reviews.csv</code></td>
+                  <td>Source reviews (you provide)</td>
+                </tr>
+                <tr>
+                  <td><code>./chrome_langchain_db/</code></td>
+                  <td>Chroma’s persistent vector store (auto-created)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2>Summary</h2>
+            <p><strong>Local</strong> restaurant Q&amp;A: ask things like <em>“How are the vegan options?”</em> and get answers that combine and compare real reviews—embeddings and LLM both run on your machine.</p>
+            <p class="img-caption" style="margin-top: 1rem;"><sub><strong>GitHub repo description:</strong> Local Q&amp;A over restaurant reviews using Chroma + Ollama. No cloud APIs.</sub></p>
+          </div>
+
+          <div class="project-links">
+            <a href="index.html#projects" class="btn-link">← Back to projects</a>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer class="term-footer">
+    <span id="year"></span> · <a href="index.html">Malak</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
