@@ -25,12 +25,26 @@
           </button>
           <div class="vscode-tree-children">
             <a href="#projects" class="vscode-tree-item" data-section="projects"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Projects</span></a>
-            <a href="project-giselle.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">GISelle</span></a>
-            <a href="project-gestureink.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Gesture Ink</span></a>
-            <a href="project-pacman-fpga.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file vscode-tree-icon-file--fun" aria-hidden="true"></span><span class="vscode-tree-label">Pacman FPGA</span></a>
-            <a href="project-ece243-tron.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">ECE243 TRON</span></a>
-            <a href="project-restaurant-local-qa.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Restaurant Q&amp;A</span></a>
-            <a href="project-scamshield.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">ScamShield</span></a>
+            <button type="button" class="vscode-tree-folder is-open" aria-expanded="true">
+              <span class="vscode-tree-chevron">▼</span>
+              <span class="vscode-tree-icon vscode-tree-icon-root" aria-hidden="true"></span>
+              <span class="vscode-tree-label">Hardware</span>
+            </button>
+            <div class="vscode-tree-children">
+              <a href="project-pacman-fpga.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file vscode-tree-icon-file--fun" aria-hidden="true"></span><span class="vscode-tree-label">Pacman FPGA</span></a>
+              <a href="project-ece243-tron.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">ECE243 TRON</span></a>
+            </div>
+            <button type="button" class="vscode-tree-folder is-open" aria-expanded="true">
+              <span class="vscode-tree-chevron">▼</span>
+              <span class="vscode-tree-icon vscode-tree-icon-root" aria-hidden="true"></span>
+              <span class="vscode-tree-label">Software</span>
+            </button>
+            <div class="vscode-tree-children">
+              <a href="project-giselle.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">GISelle</span></a>
+              <a href="project-gestureink.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Gesture Ink</span></a>
+              <a href="project-restaurant-local-qa.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Restaurant Q&amp;A</span></a>
+              <a href="project-scamshield.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">ScamShield</span></a>
+            </div>
           </div>
         </div>
       </nav>
@@ -48,90 +62,98 @@
             <section class="term-section-start projects-section projects-section--solo" id="projects">
               <header class="projects-header">
                 <h2 class="term-h2 term-h2-projects">Things I’ve built</h2>
-                <p class="projects-lede">Coursework, a hackathon build, and experiments — mostly things I actually enjoyed debugging.</p>
+                <p class="projects-lede">FPGA and SoC builds, plus apps and tools — mostly things I actually enjoyed debugging.</p>
               </header>
               <div class="term-output-section term-output-projects term-output-projects-bare">
-                <div class="project-grid">
-                  <a href="project-giselle.html" class="project-card">
-                    <div class="project-card-thumb project-card-thumb--giselle-icons">
-                      <img src="https://github.com/user-attachments/assets/657905b9-fd1b-4382-acfc-73becb07c3f2" alt="GISelle — icon layers demo (map + toggles)" width="400" height="225" loading="lazy" decoding="async" />
-                    </div>
-                    <div class="project-card-body">
-                      <strong class="project-card-title">GISelle</strong>
-                      <p class="project-card-desc">City maps with <strong>safer routing</strong> and a bunch of <strong>UI modes</strong> — my <strong>ECE297 capstone</strong>.</p>
-                      <span class="project-card-link-hint">Notes</span>
-                      <p class="project-card-meta">C++ · EZGL · pathfinding</p>
-                    </div>
-                  </a>
-                  <a href="project-gestureink.html" class="project-card">
-                    <div class="project-card-thumb">
-                      <img src="https://github.com/user-attachments/assets/cd8db60f-47e6-4059-8a00-c65dbf8d277c" alt="Gesture Ink — team at MakeUofT" width="400" height="225" loading="lazy" decoding="async" />
-                    </div>
-                    <div class="project-card-body">
-                      <strong class="project-card-title">Gesture Ink</strong>
-                      <p class="project-card-desc">Drawing in the air with a <strong>webcam</strong> and a noisy <strong>MQTT glove</strong>. Built at <strong>MakeUofT</strong>.</p>
-                      <span class="project-card-link-hint">Notes</span>
-                      <p class="project-card-meta">Python · OpenCV · Arduino</p>
-                    </div>
-                  </a>
-                  <a href="project-pacman-fpga.html" class="project-card">
-                    <div class="project-card-thumb project-card-thumb--diagram">
-                      <img src="images/pacman-fpga/hardware-arch.png" alt="Pacman FPGA hardware diagram preview" width="400" height="225" loading="lazy" decoding="async" />
-                    </div>
-                    <div class="project-card-body">
-                      <strong class="project-card-title">Pacman on FPGA</strong>
-                      <p class="project-card-desc">Classic game on <strong>VGA</strong> — <strong>Verilog</strong>, <strong>PS/2</strong> keyboard, the works. Messy but it worked.</p>
-                      <span class="project-card-link-hint">Notes</span>
-                      <p class="project-card-meta">Verilog · Cyclone IV</p>
-                    </div>
-                  </a>
-                  <a href="project-ece243-tron.html" class="project-card">
-                    <div class="project-card-thumb project-card-thumb--tron-title">
-                      <img
-                        src="images/ece243-tron/tron-title-screen.png"
-                        alt="Tron title screen — PRESS SPACE TO START"
-                        width="400"
-                        height="250"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <div class="project-card-body">
-                      <strong class="project-card-title">ECE243 — TRON</strong>
-                      <p class="project-card-desc"><strong>DE1-SoC</strong> Light Cycle — <strong>VGA</strong>, dual <strong>PS/2</strong>, README-style write-up, <strong>YouTube</strong> demo, and full <strong>PDF</strong> on the page.</p>
-                      <span class="project-card-link-hint">Notes</span>
-                      <p class="project-card-meta">C · DE1-SoC · VGA</p>
-                    </div>
-                  </a>
-                  <a href="project-restaurant-local-qa.html" class="project-card">
-                    <div class="project-card-thumb">
-                      <img
-                        src="https://github.com/user-attachments/assets/56ee28a6-a38c-4339-b77e-2a9d2bcba898"
-                        alt="Local restaurant Q&amp;A — CLI asking about vegan options"
-                        width="400"
-                        height="225"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <div class="project-card-body">
-                      <strong class="project-card-title">Local restaurant Q&amp;A</strong>
-                      <p class="project-card-desc">Plain-English questions over <strong>your</strong> review CSV — <strong>Chroma</strong> + <strong>Ollama</strong>, <strong>no cloud APIs</strong>.</p>
-                      <span class="project-card-link-hint">Notes</span>
-                      <p class="project-card-meta">Python · Chroma · LangChain</p>
-                    </div>
-                  </a>
-                  <a href="project-scamshield.html" class="project-card">
-                    <div class="project-card-thumb">
-                      <img src="images/scamshield/dashboard.png" alt="ScamShield dashboard preview" width="400" height="225" loading="lazy" decoding="async" />
-                    </div>
-                    <div class="project-card-body">
-                      <strong class="project-card-title">ScamShield</strong>
-                      <p class="project-card-desc"><strong>Hackathon</strong> fraud-call demo — <strong>Next.js</strong> frontend, <strong>IBM stack</strong> in the back.</p>
-                      <span class="project-card-link-hint">Notes</span>
-                      <p class="project-card-meta">Next.js · TypeScript</p>
-                    </div>
-                  </a>
+                <div class="project-category" id="hardware-projects">
+                  <h3 class="project-category-title">Hardware</h3>
+                  <div class="project-grid">
+                    <a href="project-pacman-fpga.html" class="project-card">
+                      <div class="project-card-thumb project-card-thumb--diagram">
+                        <img src="images/pacman-fpga/hardware-arch.png" alt="Pacman FPGA hardware diagram preview" width="400" height="225" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="project-card-body">
+                        <strong class="project-card-title">Pacman on FPGA</strong>
+                        <p class="project-card-desc">Classic game on <strong>VGA</strong> — <strong>Verilog</strong>, <strong>PS/2</strong> keyboard, the works. Messy but it worked.</p>
+                        <span class="project-card-link-hint">Notes</span>
+                        <p class="project-card-meta">Verilog · Cyclone IV</p>
+                      </div>
+                    </a>
+                    <a href="project-ece243-tron.html" class="project-card">
+                      <div class="project-card-thumb project-card-thumb--tron-title">
+                        <img
+                          src="images/ece243-tron/tron-title-screen.png"
+                          alt="Tron title screen — PRESS SPACE TO START"
+                          width="400"
+                          height="250"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <div class="project-card-body">
+                        <strong class="project-card-title">ECE243 — TRON</strong>
+                        <p class="project-card-desc"><strong>DE1-SoC</strong> Light Cycle — <strong>VGA</strong>, dual <strong>PS/2</strong>, README-style write-up, <strong>YouTube</strong> demo, and full <strong>PDF</strong> on the page.</p>
+                        <span class="project-card-link-hint">Notes</span>
+                        <p class="project-card-meta">C · DE1-SoC · VGA</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="project-category" id="software-projects">
+                  <h3 class="project-category-title">Software</h3>
+                  <div class="project-grid">
+                    <a href="project-giselle.html" class="project-card">
+                      <div class="project-card-thumb project-card-thumb--giselle-icons">
+                        <img src="https://github.com/user-attachments/assets/657905b9-fd1b-4382-acfc-73becb07c3f2" alt="GISelle — icon layers demo (map + toggles)" width="400" height="225" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="project-card-body">
+                        <strong class="project-card-title">GISelle</strong>
+                        <p class="project-card-desc">City maps with <strong>safer routing</strong> and a bunch of <strong>UI modes</strong> — my <strong>ECE297 capstone</strong>.</p>
+                        <span class="project-card-link-hint">Notes</span>
+                        <p class="project-card-meta">C++ · EZGL · pathfinding</p>
+                      </div>
+                    </a>
+                    <a href="project-gestureink.html" class="project-card">
+                      <div class="project-card-thumb">
+                        <img src="https://github.com/user-attachments/assets/cd8db60f-47e6-4059-8a00-c65dbf8d277c" alt="Gesture Ink — team at MakeUofT" width="400" height="225" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="project-card-body">
+                        <strong class="project-card-title">Gesture Ink</strong>
+                        <p class="project-card-desc">Drawing in the air with a <strong>webcam</strong> and a noisy <strong>MQTT glove</strong>. Built at <strong>MakeUofT</strong>.</p>
+                        <span class="project-card-link-hint">Notes</span>
+                        <p class="project-card-meta">Python · OpenCV · Arduino</p>
+                      </div>
+                    </a>
+                    <a href="project-restaurant-local-qa.html" class="project-card">
+                      <div class="project-card-thumb">
+                        <img
+                          src="https://github.com/user-attachments/assets/56ee28a6-a38c-4339-b77e-2a9d2bcba898"
+                          alt="Local restaurant Q&amp;A — CLI asking about vegan options"
+                          width="400"
+                          height="225"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <div class="project-card-body">
+                        <strong class="project-card-title">Local restaurant Q&amp;A</strong>
+                        <p class="project-card-desc">Plain-English questions over <strong>your</strong> review CSV — <strong>Chroma</strong> + <strong>Ollama</strong>, <strong>no cloud APIs</strong>.</p>
+                        <span class="project-card-link-hint">Notes</span>
+                        <p class="project-card-meta">Python · Chroma · LangChain</p>
+                      </div>
+                    </a>
+                    <a href="project-scamshield.html" class="project-card">
+                      <div class="project-card-thumb">
+                        <img src="images/scamshield/dashboard.png" alt="ScamShield dashboard preview" width="400" height="225" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="project-card-body">
+                        <strong class="project-card-title">ScamShield</strong>
+                        <p class="project-card-desc"><strong>Hackathon</strong> fraud-call demo — <strong>Next.js</strong> frontend, <strong>IBM stack</strong> in the back.</p>
+                        <span class="project-card-link-hint">Notes</span>
+                        <p class="project-card-meta">Next.js · TypeScript</p>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </section>

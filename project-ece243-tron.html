@@ -50,6 +50,56 @@
             <h2>Project overview</h2>
             <p>This implementation runs entirely on an FPGA without the use of a general-purpose processor, leveraging parallel hardware execution for game logic, rendering, and peripheral communication. The system generates VGA video output at 320×240 resolution with 16-bit color depth (RGB 565), processes PS/2 keyboard input for two players, and supports audio output through an I2S audio codec interface.</p>
 
+            <h2>Full setup (external view)</h2>
+            <p>Whole bench: DE1-SoC in front of the monitor, VGA out, speakers, and power — with the <strong>TRON</strong> title screen visible on the display as seen from outside (not a raw framebuffer capture).</p>
+            <figure class="project-figure project-figure--tron-full-compact">
+              <span class="project-img-wrap project-img-wrap--tron-setup-external" data-img-loaded>
+                <img
+                  src="images/ece243-tron/tron-full-setup-external-view.png"
+                  alt="Lab desk: monitor showing TRON title screen PRESS SPACE TO START, DE1-SoC board, VGA cable, speakers, and cabling"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1024"
+                  height="747"
+                />
+              </span>
+              <figcaption class="img-caption">Complete station — game on the monitor from an external/lab perspective.</figcaption>
+            </figure>
+
+            <h2>Dual PS/2, mouse &amp; audio</h2>
+            <p><strong>Dual PS/2</strong>: <strong>purple</strong> (keyboard) and <strong>teal</strong> (mouse) into the FPGA for two-player keys and menus. Separate bench shot: <strong>mice</strong> for play-testing and UI, plus <strong>powered speakers</strong> on the codec / line-out for game audio.</p>
+            <div class="project-figure-split" role="group" aria-label="PS/2 wiring and audio plus mice">
+              <figure class="project-figure project-figure--split">
+                <span class="project-img-wrap project-img-wrap--tron-dual-ps2" data-img-loaded>
+                  <img
+                    src="images/ece243-tron/tron-dual-ps2-keyboard-mouse.png"
+                    alt="Close-up of purple and teal PS/2 keyboard and mouse connectors at the DE1-SoC"
+                    class="project-img"
+                    loading="lazy"
+                    decoding="async"
+                    width="1024"
+                    height="761"
+                  />
+                </span>
+                <figcaption class="img-caption">Dual PS/2 — keyboard and mouse cables.</figcaption>
+              </figure>
+              <figure class="project-figure project-figure--split">
+                <span class="project-img-wrap project-img-wrap--portrait-4-5" data-img-loaded>
+                  <img
+                    src="images/ece243-tron/tron-audio-mice-setup.png"
+                    alt="Desk with DE1-SoC, two computer mice, and powered speakers for audio output"
+                    class="project-img"
+                    loading="lazy"
+                    decoding="async"
+                    width="819"
+                    height="1024"
+                  />
+                </span>
+                <figcaption class="img-caption">Mice + speakers — UI/play-test input and I2S / codec audio.</figcaption>
+              </figure>
+            </div>
+
             <h2>Block diagram</h2>
             <figure class="project-figure">
               <span class="project-img-wrap" data-img-loaded>
