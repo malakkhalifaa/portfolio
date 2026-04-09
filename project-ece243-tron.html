@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tron Game FPGA — Malak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="terminal-window">
+    <header class="term-titlebar">
+      <div class="term-dots">
+        <span class="dot close"></span>
+        <span class="dot min"></span>
+        <span class="dot max"></span>
+      </div>
+      <span class="term-title">project: ece243-tron — Malak</span>
+      <a href="index.html#projects" class="back-link term-back">← index</a>
+      <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
+    </header>
+
+    <main class="term-body">
+      <div class="term-content">
+        <div class="term-line">
+          <span class="prompt">malak@portfolio:~/projects$</span>
+          <span class="cmd">cat ece243-tron/README.md</span>
+        </div>
+        <article class="project-detail project-detail-long">
+          <h1>Tron Game FPGA Implementation</h1>
+          <p class="project-meta">C · DE1-SoC · VGA · PS/2 · ECE243</p>
+
+          <div class="project-body">
+            <p>Designed and implemented a real-time Tron Light Cycle game in C on a DE1-SoC. Modular game logic with state-based menu navigation (title, mode selection, difficulty selection, color selection, gameplay, game-over). Double-buffered VGA output, dual PS/2 keyboard input with interrupt handling, mouse-driven menu interaction, and audio feedback via square wave synthesis. Simulation, waveform debugging, and timing optimization to meet FPGA clock constraints. Synchronous design with memory-mapped I/O and interrupt service routines.</p>
+
+            <h2>Project overview</h2>
+            <p>This implementation runs entirely on an FPGA without the use of a general-purpose processor, leveraging parallel hardware execution for game logic, rendering, and peripheral communication. The system generates VGA video output at 320×240 resolution with 16-bit color depth (RGB 565), processes PS/2 keyboard input for two players, and supports audio output through an I2S audio codec interface.</p>
+
+            <h2>Block diagram</h2>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded>
+                <img
+                  src="https://github.com/user-attachments/assets/8b11caba-bc32-4a57-a360-3ddcc7dd81e7"
+                  alt="Tron final block diagram"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1920"
+                  height="1080"
+                />
+              </span>
+            </figure>
+
+            <h2>Demo</h2>
+            <p>Demonstration video showcasing gameplay, hardware connections, and system functionality.</p>
+            <figure class="project-figure">
+              <a href="https://youtu.be/mhJHzjsHefQ" class="project-img-wrap" target="_blank" rel="noopener noreferrer" data-img-loaded>
+                <img
+                  src="https://img.youtube.com/vi/mhJHzjsHefQ/maxresdefault.jpg"
+                  alt="TRON gameplay demo — watch on YouTube"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1280"
+                  height="720"
+                />
+              </a>
+              <figcaption class="img-caption">Click the thumbnail to open the demo on YouTube in a new tab.</figcaption>
+            </figure>
+            <p class="project-demo-link">
+              <a href="https://youtu.be/mhJHzjsHefQ" class="btn-link" target="_blank" rel="noopener noreferrer">Watch demo on YouTube →</a>
+            </p>
+
+            <h2>Features</h2>
+            <table class="project-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Feature</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Dual-Player Mode</td>
+                    <td>Two players control light cycles using WASD and IJKL keys</td>
+                  </tr>
+                  <tr>
+                    <td>Single-Player Mode</td>
+                    <td>Player vs AI with three difficulty levels (Easy/Medium/Hard)</td>
+                  </tr>
+                  <tr>
+                    <td>Color Selection</td>
+                    <td>Choose between blue or green bike as the player character</td>
+                  </tr>
+                  <tr>
+                    <td>Dynamic Arena</td>
+                    <td>Different obstacle layouts based on difficulty</td>
+                  </tr>
+                  <tr>
+                    <td>Trail System</td>
+                    <td>Each bike leaves a trail that acts as a wall</td>
+                  </tr>
+                  <tr>
+                    <td>Collision Detection</td>
+                    <td>Pixel-perfect collision detection for walls, trails, and opponent</td>
+                  </tr>
+                  <tr>
+                    <td>Score Tracking</td>
+                    <td>First to 3 points wins</td>
+                  </tr>
+                  <tr>
+                    <td>Audio Feedback</td>
+                    <td>Collision sounds, game over music, and UI beeps</td>
+                  </tr>
+                  <tr>
+                    <td>Pause Functionality</td>
+                    <td>Press SPACE to pause/resume</td>
+                  </tr>
+                  <tr>
+                    <td>Mouse Support</td>
+                    <td>Clickable UI for mode/difficulty/color selection</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            <h2>Hardware architecture</h2>
+
+            <h3>Target platform specifications</h3>
+            <table class="project-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Specification</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Target FPGA</td>
+                    <td>Intel/Altera Cyclone V (DE1-SoC)</td>
+                  </tr>
+                  <tr>
+                    <td>System Clock</td>
+                    <td>50 MHz</td>
+                  </tr>
+                  <tr>
+                    <td>VGA Resolution</td>
+                    <td>320 × 240 pixels</td>
+                  </tr>
+                  <tr>
+                    <td>VGA Refresh Rate</td>
+                    <td>60 Hz</td>
+                  </tr>
+                  <tr>
+                    <td>Color Depth</td>
+                    <td>16 bits per pixel (RGB 565)</td>
+                  </tr>
+                  <tr>
+                    <td>Pixel Clock</td>
+                    <td>25 MHz</td>
+                  </tr>
+                  <tr>
+                    <td>Audio Sample Rate</td>
+                    <td>8 kHz</td>
+                  </tr>
+                  <tr>
+                    <td>PS/2 Clock Frequency</td>
+                    <td>~10–16.7 kHz</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            <h3>Memory-mapped hardware addresses</h3>
+            <pre><code>// Hardware base addresses
+#define VGA_PIXEL_CTRL_BASE   0xFF203020  // VGA controller
+#define VGA_STATUS_OFFSET     0x0C        // VGA status register
+#define PS2_BASE_PRIMARY      0xFF200100  // PS/2 keyboard
+#define PS2_BASE_MOUSE        0xFF200108  // PS/2 mouse
+#define AUDIO_BASE            0xFF203040  // Audio codec</code></pre>
+
+            <h2>Future enhancements</h2>
+            <ul>
+              <li><strong>Network multiplayer:</strong> Connect two DE1-SoC boards over Ethernet</li>
+              <li><strong>Power-ups:</strong> Speed boosts, invincibility, trail erasing</li>
+              <li><strong>High score table:</strong> Store top scores in on-board flash</li>
+              <li><strong>Custom arena editor:</strong> User-defined obstacle layouts</li>
+              <li><strong>Enhanced AI:</strong> Machine learning–based opponent</li>
+              <li><strong>Replay system:</strong> Record and playback game sessions</li>
+              <li><strong>Additional sound effects:</strong> Trail drawing, scoring sounds</li>
+              <li><strong>Smooth animation:</strong> Sub-pixel movement with interpolation</li>
+            </ul>
+
+            <h2>References</h2>
+            <ul>
+              <li><a href="https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=836" target="_blank" rel="noopener noreferrer">DE1-SoC User Manual</a></li>
+              <li><a href="http://tinyvga.com/vga-timing" target="_blank" rel="noopener noreferrer">VGA timing standards</a></li>
+              <li><a href="https://wiki.osdev.org/PS/2_Keyboard" target="_blank" rel="noopener noreferrer">PS/2 keyboard protocol</a></li>
+              <li><a href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf" target="_blank" rel="noopener noreferrer">I2S audio specification (NXP)</a></li>
+              <li><a href="https://developer.arm.com/documentation/ddi0407" target="_blank" rel="noopener noreferrer">ARM Cortex-A9 MPCore technical reference manual</a></li>
+            </ul>
+
+            <h2>License</h2>
+            <p>This project was developed for educational purposes as part of ECE243 coursework at the University of Toronto.</p>
+
+            <h2>Full report (PDF)</h2>
+            <p>Course write-up with additional detail — scroll inside the frame. If the preview is blank, use <strong>Open PDF in new tab</strong>. Embedded PDFs often require the site to be served over HTTP (e.g. Live Server, GitHub Pages), not a raw <code>file://</code> path.</p>
+
+            <div class="pdf-embed-wrap">
+              <iframe
+                class="pdf-embed"
+                src="pdfs/ece243-tron.pdf"
+                title="ECE243 TRON project report"
+              ></iframe>
+            </div>
+            <p class="pdf-embed-actions">
+              <a href="pdfs/ece243-tron.pdf" class="btn-link" target="_blank" rel="noopener noreferrer">Open PDF in new tab</a>
+              <a href="pdfs/ece243-tron.pdf" class="btn-link btn-link-secondary" download>Download</a>
+            </p>
+          </div>
+
+          <div class="project-links">
+            <a href="index.html#projects" class="btn-link">← Back to projects</a>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer class="term-footer">
+    <span id="year"></span> · <a href="index.html">Malak</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
