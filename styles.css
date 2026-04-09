@@ -699,9 +699,11 @@ body:has(> .terminal-window) {
 }
 .project-card {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
-  padding: 1rem 2.6rem 0.95rem 1rem;
+  padding: 0;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--term-border);
   text-decoration: none;
@@ -713,6 +715,40 @@ body:has(> .terminal-window) {
 }
 .project-card:nth-child(even) {
   border-radius: 13px 10px 12px 11px;
+}
+.project-card-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  flex-shrink: 0;
+  background: linear-gradient(165deg, #1c1c22 0%, #0e0e11 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.project-card-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.project-card-thumb--map img {
+  object-position: center top;
+}
+.project-card-thumb--diagram {
+  aspect-ratio: 16 / 11;
+  background: radial-gradient(ellipse 70% 90% at 50% 45%, #252530, #0c0c0f);
+}
+.project-card-thumb--diagram img {
+  object-fit: contain;
+  object-position: center;
+  padding: 0.35rem 0.5rem;
+}
+[data-theme="light"] .project-card-thumb {
+  background: linear-gradient(165deg, #eceef2 0%, #dfe3ea 100%);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .project-card-thumb--diagram {
+  background: radial-gradient(ellipse 70% 90% at 50% 45%, #f0f2f6, #e2e6ee);
 }
 [data-theme="light"] .project-card {
   background: rgba(0, 0, 0, 0.02);
@@ -734,6 +770,8 @@ body:has(> .terminal-window) {
   display: flex;
   flex-direction: column;
   gap: 0;
+  padding: 0.95rem 2.6rem 0.95rem 1rem;
+  flex: 1;
 }
 .project-card-title {
   display: block;
@@ -754,6 +792,19 @@ body:has(> .terminal-window) {
   line-height: 1.5;
   margin: 0 0 0.5rem;
   flex: 1;
+}
+.project-card-desc strong {
+  color: #f2f2f5;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: rgba(255, 255, 255, 0.92);
+}
+[data-theme="light"] .project-card-desc strong {
+  color: var(--term-text);
+  text-decoration-color: var(--term-text);
+  text-decoration-thickness: 2.5px;
 }
 .project-card-link-hint {
   position: absolute;
