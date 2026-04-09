@@ -11,28 +11,31 @@
 </head>
 <body>
   <div class="vscode-layout">
-    <aside class="vscode-sidebar" aria-label="Explorer">
+    <aside class="vscode-sidebar vscode-sidebar-cozy" aria-label="Explorer">
       <div class="vscode-sidebar-header">
-        <span class="vscode-sidebar-title">EXPLORER</span>
+        <span class="explorer-badge" title="Your file tree">
+          <span class="explorer-badge-glow" aria-hidden="true"></span>
+          <span class="explorer-badge-text">Explorer</span>
+        </span>
         <button type="button" class="vscode-sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">≡</button>
       </div>
       <nav class="vscode-tree">
         <div class="vscode-tree-root">
           <button type="button" class="vscode-tree-folder is-open" aria-expanded="true">
             <span class="vscode-tree-chevron">▼</span>
-            <span class="vscode-tree-icon">📁</span>
-            <span class="vscode-tree-label">PORTFOLIO</span>
+            <span class="vscode-tree-icon vscode-tree-icon-root" aria-hidden="true"></span>
+            <span class="vscode-tree-label">portfolio</span>
           </button>
           <div class="vscode-tree-children">
-            <a href="#about" class="vscode-tree-item" data-section="about"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">about</span></a>
-            <a href="#education" class="vscode-tree-item" data-section="education"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">education</span></a>
-            <a href="#skills" class="vscode-tree-item" data-section="skills"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">skills</span></a>
-            <button type="button" class="vscode-tree-folder is-open"><span class="vscode-tree-chevron">▼</span><span class="vscode-tree-icon">📁</span><span class="vscode-tree-label">projects</span></button>
+            <a href="#about" class="vscode-tree-item" data-section="about"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">about</span></a>
+            <a href="#education" class="vscode-tree-item" data-section="education"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">education</span></a>
+            <a href="#skills" class="vscode-tree-item" data-section="skills"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">skills</span></a>
+            <button type="button" class="vscode-tree-folder is-open"><span class="vscode-tree-chevron">▼</span><span class="vscode-tree-icon vscode-tree-icon-root" aria-hidden="true"></span><span class="vscode-tree-label">projects</span></button>
             <div class="vscode-tree-children">
-              <a href="project-giselle.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">giselle</span></a>
-              <a href="project-gestureink.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">gestureink</span></a>
-              <a href="project-pacman-fpga.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon" aria-hidden="true">🎮</span><span class="vscode-tree-label">pacman-fpga</span></a>
-              <a href="project-scamshield.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">scamshield</span></a>
+              <a href="project-giselle.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">giselle</span></a>
+              <a href="project-gestureink.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">gestureink</span></a>
+              <a href="project-pacman-fpga.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file vscode-tree-icon-file--fun" aria-hidden="true"></span><span class="vscode-tree-label">pacman-fpga</span></a>
+              <a href="project-scamshield.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">scamshield</span></a>
             </div>
           </div>
         </div>
@@ -48,6 +51,22 @@
         </header>
         <main class="term-body">
           <div class="term-content">
+            <div class="fireplace-strip" aria-hidden="true" title="Cozy corner">
+              <div class="fireplace">
+                <div class="fireplace-back"></div>
+                <div class="fireplace-logs">
+                  <span class="log"></span><span class="log"></span>
+                </div>
+                <div class="fireplace-flames">
+                  <span class="flame flame-a"></span>
+                  <span class="flame flame-b"></span>
+                  <span class="flame flame-c"></span>
+                </div>
+                <div class="fireplace-embers"></div>
+              </div>
+              <p class="fireplace-label">Cozy fireplace · stay awhile</p>
+            </div>
+
             <section class="section-hero" id="welcome">
               <h1 class="hero-name">Malak</h1>
               <p class="hero-tagline">Portfolio</p>
@@ -55,9 +74,9 @@
 
             <section class="term-section-start" id="about">
               <h2 class="term-h2">About</h2>
-              <div class="term-output-section about-content soft-panel">
-                <div class="soft-prose">
-                  <p class="soft-lede">hey — i’m studying computer engineering at u of t (PEY co‑op track). this site is a tiny snapshot of what i’ve been learning &amp; building.</p>
+              <div class="term-output-section about-content about-panel soft-panel">
+                <div class="about-prose">
+                  <p class="about-lede">Hi — I’m Malak. I study <strong>computer engineering</strong> at the University of Toronto (PEY co-op) and enjoy work that sits between <strong>software</strong>, <strong>ML</strong>, and <strong>hardware</strong>. This site is a small home for projects I’m proud of and things I’ve learned along the way.</p>
                 </div>
               </div>
             </section>
@@ -110,40 +129,43 @@
               </div>
             </section>
 
-            <section class="term-section-start" id="projects">
-              <h2 class="term-h2">Projects</h2>
-              <div class="term-output-section term-output-projects">
+            <section class="term-section-start projects-section" id="projects">
+              <header class="projects-header">
+                <h2 class="term-h2 term-h2-projects">Things I’ve built</h2>
+                <p class="projects-lede">Coursework, a hackathon build, and experiments — mostly things I actually enjoyed debugging.</p>
+              </header>
+              <div class="term-output-section term-output-projects term-output-projects-bare">
                 <div class="project-grid">
                   <a href="project-giselle.html" class="project-card">
                     <div class="project-card-body">
                       <strong class="project-card-title">GISelle</strong>
-                      <p class="project-card-desc">Safety-aware navigation for women</p>
-                      <span class="project-card-arrow" aria-hidden="true">→</span>
-                      <div class="project-card-tags"><span>C++</span><span>EZGL</span></div>
+                      <p class="project-card-desc">City maps with safer routing and a bunch of UI modes — my ECE297 capstone.</p>
+                      <span class="project-card-link-hint">notes</span>
+                      <p class="project-card-meta">C++ · EZGL · pathfinding</p>
                     </div>
                   </a>
                   <a href="project-gestureink.html" class="project-card">
                     <div class="project-card-body">
                       <strong class="project-card-title">Gesture Ink</strong>
-                      <p class="project-card-desc">MakeUofT 2025 — mid-air drawing, MQTT glove, vision</p>
-                      <span class="project-card-arrow" aria-hidden="true">→</span>
-                      <div class="project-card-tags"><span>Python</span><span>OpenCV</span></div>
+                      <p class="project-card-desc">Drawing in the air with a webcam and a noisy MQTT glove. Built at MakeUofT.</p>
+                      <span class="project-card-link-hint">notes</span>
+                      <p class="project-card-meta">Python · OpenCV · Arduino</p>
                     </div>
                   </a>
                   <a href="project-pacman-fpga.html" class="project-card">
                     <div class="project-card-body">
-                      <strong class="project-card-title">Pacman FPGA</strong>
-                      <p class="project-card-desc">Verilog VGA game — PS/2, I2S, Cyclone IV</p>
-                      <span class="project-card-arrow" aria-hidden="true">→</span>
-                      <div class="project-card-tags"><span>Verilog</span><span>FPGA</span></div>
+                      <strong class="project-card-title">Pacman on FPGA</strong>
+                      <p class="project-card-desc">Classic game on VGA — Verilog, PS/2 keyboard, the works. Messy but it worked.</p>
+                      <span class="project-card-link-hint">notes</span>
+                      <p class="project-card-meta">Verilog · Cyclone IV</p>
                     </div>
                   </a>
                   <a href="project-scamshield.html" class="project-card">
                     <div class="project-card-body">
                       <strong class="project-card-title">ScamShield</strong>
-                      <p class="project-card-desc">AI fraud guardian — GenAI Genesis, Watsonx, Next.js</p>
-                      <span class="project-card-arrow" aria-hidden="true">→</span>
-                      <div class="project-card-tags"><span>Next.js</span><span>TypeScript</span></div>
+                      <p class="project-card-desc">Hackathon fraud-call demo — Next.js frontend, IBM stack in the back.</p>
+                      <span class="project-card-link-hint">notes</span>
+                      <p class="project-card-meta">Next.js · TypeScript</p>
                     </div>
                   </a>
                 </div>
