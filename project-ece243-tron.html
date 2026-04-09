@@ -51,20 +51,27 @@
             <p>This implementation runs entirely on an FPGA without the use of a general-purpose processor, leveraging parallel hardware execution for game logic, rendering, and peripheral communication. The system generates VGA video output at 320×240 resolution with 16-bit color depth (RGB 565), processes PS/2 keyboard input for two players, and supports audio output through an I2S audio codec interface.</p>
 
             <h2>Full setup (external view)</h2>
-            <p>Whole bench: DE1-SoC in front of the monitor, VGA out, speakers, and power — with the <strong>TRON</strong> title screen visible on the display as seen from outside (not a raw framebuffer capture).</p>
+            <p>Whole bench: DE1-SoC in front of the monitor, VGA out, speakers, keyboard and mouse, and power — menu on the display (<strong>SINGLE PLAYER</strong> / <strong>MULTI PLAYER</strong>) as seen from the lab, not a raw framebuffer capture.</p>
             <figure class="project-figure project-figure--tron-full-compact">
               <span class="project-img-wrap project-img-wrap--tron-setup-external" data-img-loaded>
-                <img
-                  src="images/ece243-tron/tron-full-setup-external-view.png"
-                  alt="Lab desk: monitor showing TRON title screen PRESS SPACE TO START, DE1-SoC board, VGA cable, speakers, and cabling"
-                  class="project-img"
-                  loading="lazy"
-                  decoding="async"
-                  width="1024"
-                  height="747"
-                />
+                <span class="setup-photo-stack">
+                  <img
+                    src="images/ece243-tron/tron-full-setup-labeled-base.png"
+                    alt="Lab desk: FPGA board, monitor with Tron single vs multi player menu, Logitech keyboard, mouse, and desktop speakers"
+                    class="project-img"
+                    loading="lazy"
+                    decoding="async"
+                    width="1024"
+                    height="743"
+                  />
+                  <div class="setup-annotate" aria-hidden="true">
+                    <span class="setup-annotate__tag setup-annotate__tag--keyboard">Keyboard</span>
+                    <span class="setup-annotate__tag setup-annotate__tag--mouse">Mouse</span>
+                    <span class="setup-annotate__tag setup-annotate__tag--audio">Audio</span>
+                  </div>
+                </span>
               </span>
-              <figcaption class="img-caption">Complete station — game on the monitor from an external/lab perspective.</figcaption>
+              <figcaption class="img-caption">Complete station — labels on the photo call out keyboard, mouse, and speakers.</figcaption>
             </figure>
 
             <h2>Dual PS/2, mouse &amp; audio</h2>
@@ -266,16 +273,24 @@
             <p>This project was developed for educational purposes as part of ECE243 coursework at the University of Toronto.</p>
 
             <h2>Full report (PDF)</h2>
-            <p>Course write-up with additional detail — scroll inside the frame. If the preview is blank, use <strong>Open PDF in new tab</strong>. Embedded PDFs often require the site to be served over HTTP (e.g. Live Server, GitHub Pages), not a raw <code>file://</code> path.</p>
+            <p class="pdf-embed-intro pdf-embed-intro--desktop">Course write-up with additional detail — scroll inside the frame on a large screen. If the preview is blank, use <strong>Open PDF in new tab</strong>. Embedded PDFs often require the site to be served over HTTP (e.g. Live Server, GitHub Pages), not a raw <code>file://</code> path.</p>
+            <p class="pdf-embed-intro pdf-embed-intro--mobile">On phones, embedded PDFs usually only show the <strong>first page</strong> and won’t scroll through the whole document. Use <strong>Open full PDF</strong> below so your browser’s reader can show every page.</p>
 
             <div class="pdf-embed-wrap">
               <iframe
-                class="pdf-embed"
+                class="pdf-embed pdf-embed--desktop-only"
                 src="pdfs/ece243-tron.pdf"
                 title="ECE243 TRON project report"
               ></iframe>
+              <div class="pdf-embed-mobile-fallback">
+                <p class="pdf-embed-mobile-note">Preview isn’t available on small screens — open the file for the full report.</p>
+                <div class="pdf-embed-mobile-actions">
+                  <a href="pdfs/ece243-tron.pdf" class="btn-link" target="_blank" rel="noopener noreferrer">Open full PDF</a>
+                  <a href="pdfs/ece243-tron.pdf" class="btn-link btn-link-secondary" download>Download</a>
+                </div>
+              </div>
             </div>
-            <p class="pdf-embed-actions">
+            <p class="pdf-embed-actions pdf-embed-actions--desktop-only">
               <a href="pdfs/ece243-tron.pdf" class="btn-link" target="_blank" rel="noopener noreferrer">Open PDF in new tab</a>
               <a href="pdfs/ece243-tron.pdf" class="btn-link btn-link-secondary" download>Download</a>
             </p>
