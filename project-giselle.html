@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GISelle — Malak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="terminal-window">
+    <header class="term-titlebar">
+      <div class="term-dots">
+        <span class="dot close"></span>
+        <span class="dot min"></span>
+        <span class="dot max"></span>
+      </div>
+      <span class="term-title">project: giselle — Malak</span>
+      <a href="index.html#projects" class="back-link term-back">← index</a>
+      <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
+    </header>
+
+    <main class="term-body">
+      <div class="term-content">
+        <div class="term-line">
+          <span class="prompt">malak@portfolio:~/projects$</span>
+          <span class="cmd">cat giselle/README.md</span>
+        </div>
+        <article class="project-detail project-detail-long">
+          <h1>GISelle — Safety-Aware Navigation & Pathfinding Platform</h1>
+          <p class="project-meta">C++ · EZGL · A* · Multi-Destination Dijkstra · Simulated Annealing · Multi-threaded · U of T ECE297</p>
+
+          <div class="project-body">
+            <p>GISelle (<em>elle</em>, French for “her”) is a safety-first GIS navigation platform developed for the University of Toronto <strong>ECE297: Software Design & Communication</strong> course. It extends shortest-path routing with <strong>safety-aware heuristics</strong>, <strong>emergency rerouting</strong>, and <strong>context-aware UI modes</strong> for women and vulnerable users. Awarded an <strong>A</strong> for algorithmic performance, implementation quality, and usability across all milestones.</p>
+
+            <h2>Demo</h2>
+            <p>Full walkthrough of the map UI, safety modes, and routing — opens on YouTube in a new tab.</p>
+            <p class="project-demo-link">
+              <a href="https://www.youtube.com/watch?v=R6eMUSdFI6k" class="btn-link" target="_blank" rel="noopener">Watch demo on YouTube →</a>
+            </p>
+
+            <hr />
+
+            <h2>Motivation</h2>
+            <p>Standard routing optimizes for distance or time and does not model safety. GISelle adds:</p>
+            <ul>
+              <li><strong>Safety-aware cost functions</strong> — main-road bias, lighting, turn penalties.</li>
+              <li><strong>Emergency rerouting</strong> — one-click redirect to nearest police station.</li>
+              <li><strong>Shift-aware UI</strong> — day, night, and night-shift modes with high-contrast safety POIs (police, hospitals, transit).</li>
+            </ul>
+
+            <h2>Architecture & Milestones</h2>
+            <p>Four phases: data pipeline and rendering, search and filtering, pathfinding, and delivery optimization.</p>
+
+            <h3>Milestone 1: Data Integration & Rendering</h3>
+            <p><strong>Objective:</strong> GIS backend and renderer for interactive map display.</p>
+            <ul>
+              <li><strong>Input:</strong> Binary (`.bin`) map dumps.</li>
+              <li><strong>Output:</strong> Structured graph (streets, intersections, POIs) with fast lookup for rendering and pathfinding.</li>
+              <li><strong>Implementation:</strong> Custom parser → adjacency structures → EZGL 2D rendering with pan/zoom.</li>
+            </ul>
+
+            <h3>Milestone 2: Search & Context-Aware UI</h3>
+            <p><strong>Objective:</strong> Real-time street search and safety-oriented visual modes.</p>
+            <p><strong>Data structures:</strong> <strong>Trie</strong> for prefix autocomplete; toggleable icon layers for police, hospitals, transit with day/night glyphs and tooltips.</p>
+            <p><strong>UI modes:</strong> Default (full map); Dark (reduced glare); Night shift (emphasizes police, hospitals, transit; darker palette).</p>
+
+            <h4>Before (baseline UI)</h4>
+            <p class="img-caption">Original UI before safety enhancements: low contrast, no POI filters.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/af1c83a5-c154-4dca-b105-04f8dac1bcf7" alt="Baseline GISelle UI before enhancements" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+              <figcaption>Baseline UI</figcaption>
+            </figure>
+
+            <h4>Default map (post–Milestone 2)</h4>
+            <p class="img-caption">Streets, intersections, and POIs rendered via EZGL; search and drawing enabled.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/b0281ca4-620a-4d75-a548-657350177283" alt="Default map view with search and icons" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+            </figure>
+
+            <h4>Night shift mode</h4>
+            <p class="img-caption">Police, hospitals, and transit highlighted; darker palette for low-light use.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/48414b11-9707-4e36-aaac-da56bbc60577" alt="Night shift mode with safety POIs" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+            </figure>
+
+            <h4>Dark mode</h4>
+            <p class="img-caption">Reduced glare; same features for evening or indoor use.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/0f6687e5-fde6-469c-bf66-03c62842bade" alt="Dark mode UI" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+            </figure>
+
+            <h4>Icon filtering (demo)</h4>
+            <p class="img-caption">Toggle layers for police, hospitals, transit; click to open full demo.</p>
+            <a href="https://drive.google.com/file/d/1ZqqvSZlfG-oxGxM2vKJ8t9Unu_PgmEsV/view?usp=sharing" target="_blank" rel="noopener" class="project-img-wrap" data-img-loaded>
+              <img src="https://github.com/user-attachments/assets/657905b9-fd1b-4382-acfc-73becb07c3f2" alt="Icon filter demo video" class="project-img" loading="lazy" decoding="async" width="900" height="506" />
+            </a>
+
+            <h4>Night mode + icon filters</h4>
+            <p class="img-caption">Dark theme with safety POIs; high-contrast icons and hover tooltips.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/61dd6bf4-6028-4be0-8d2e-15b2680e4928" alt="Night UI with icon filters" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+            </figure>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/1fd3456f-6e00-4236-95f3-7d07f70f8177" alt="Icon filter panel active" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+              <figcaption>Icon filter active</figcaption>
+            </figure>
+
+            <h4>Autocomplete (Trie-backed search)</h4>
+            <p class="img-caption">Prefix search over street names; results drive map highlighting.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/06da75a2-27ab-4a32-83ea-b96a4fb211db" alt="Autocomplete search in action" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+            </figure>
+
+            <hr />
+
+            <h3>Milestone 3: A* Pathfinding</h3>
+            <p><strong>Objective:</strong> Time- and safety-aware routing between two intersections.</p>
+            <p><strong>Cost model:</strong> Edge cost = travel time (not just length); main roads favored; turn penalties at intersections. Admissible heuristic for A* optimality.</p>
+            <p><strong>Implementation:</strong> Priority queue over <code>f(n) = g(n) + h(n)</code>; minimal node expansion.</p>
+
+            <h4>Shortest safe path (A→B)</h4>
+            <p class="img-caption">A* route with time and turn penalties; main-road bias for safety.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/b1b35238-5ac3-4bed-8b18-c45324f1cd41" alt="Shortest safe path between two intersections" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+            </figure>
+
+            <h4>Emergency reroute to nearest police station</h4>
+            <p class="img-caption">One-click reroute from current path to closest police station.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/ca1bc35e-8639-424c-a373-64ed178a19c5" alt="Emergency reroute to police station" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+            </figure>
+
+            <hr />
+
+            <h3>Milestone 4: Traveling Courier Problem</h3>
+            <p><strong>Objective:</strong> Multi-pickup, multi-dropoff routes with depot and time limits via metaheuristics.</p>
+            <ul>
+              <li><strong>Precomputation:</strong> Multi-destination Dijkstra for travel-time matrix.</li>
+              <li><strong>Optimization:</strong> Multi-start + 2-opt Simulated Annealing under 50 s cap.</li>
+              <li><strong>Parallelism:</strong> <code>std::thread</code> for concurrent SA runs; keep best solution.</li>
+            </ul>
+
+            <h2>Safety Features</h2>
+            <ul>
+              <li><strong>Find nearest police</strong> — one action reroutes to closest police station.</li>
+              <li><strong>Regional helplines</strong> — toggle shows crisis/support numbers for current region.</li>
+              <li><strong>Usability:</strong> SUS surveys and timed tasks (e.g. find safety button &lt; 2 s).</li>
+            </ul>
+
+            <h4>Find nearest police (demo)</h4>
+            <p class="img-caption">Video: instant reroute to nearest police station; click to open.</p>
+            <a href="https://drive.google.com/file/d/1ZqqvSZlfG-oxGxM2vKJ8t9Unu_PgmEsV/view?usp=sharing" target="_blank" rel="noopener" class="project-img-wrap" data-img-loaded>
+              <img src="https://github.com/user-attachments/assets/f7d23e41-63be-420e-bd48-4e1a8c5584d0" alt="Find nearest police demo" class="project-img" loading="lazy" decoding="async" width="900" height="506" />
+            </a>
+
+            <h4>Helpline by region (demo)</h4>
+            <p class="img-caption">Video: regional crisis/support numbers in map UI; click to open.</p>
+            <a href="https://drive.google.com/file/d/1ZqqvSZlfG-oxGxM2vKJ8t9Unu_PgmEsV/view?usp=sharing" target="_blank" rel="noopener" class="project-img-wrap" data-img-loaded>
+              <img src="https://github.com/user-attachments/assets/2f5e0292-2f11-44ef-933b-97705226e1b6" alt="Helpline toggle demo" class="project-img" loading="lazy" decoding="async" width="900" height="506" />
+            </a>
+
+            <h2>Evaluation</h2>
+            <ul>
+              <li><strong>Usability (SUS):</strong> 10 participants; high scores for confidence and ease of use.</li>
+              <li><strong>Responsiveness:</strong> Majority located safety actions in &lt; 2 s.</li>
+              <li><strong>Courier (2-opt SA):</strong> ~10–15 s improvement in route time vs baseline.</li>
+            </ul>
+
+            <h2>Future Work</h2>
+            <ul>
+              <li>Street-light–aware edge costs for night routes.</li>
+              <li>Ride-hail API (e.g. Uber) with women/preferred-rider flow from map UI.</li>
+              <li>Crowdsourced safety: user-reported incidents or unsafe zones with moderation.</li>
+            </ul>
+
+            <blockquote class="project-quote">Safety shouldn’t be an afterthought — GISelle centers it in every route and UI decision.</blockquote>
+
+            <h2>Team</h2>
+            <figure class="project-figure">
+              <span class="project-img-wrap project-img-team-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/1a87ed0e-7e69-4092-959c-0e9b3d8d6b8d" alt="GISelle team" class="project-img project-img-team" loading="lazy" decoding="async" width="480" height="320" /></span>
+            </figure>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="btn-link" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer class="term-footer">
+    <span id="year"></span> · <a href="index.html">Malak</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

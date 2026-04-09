@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScamShield — Malak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="terminal-window">
+    <header class="term-titlebar">
+      <div class="term-dots">
+        <span class="dot close"></span>
+        <span class="dot min"></span>
+        <span class="dot max"></span>
+      </div>
+      <span class="term-title">project: scamshield — Malak</span>
+      <a href="index.html#projects" class="back-link term-back">← index</a>
+      <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
+    </header>
+
+    <main class="term-body">
+      <div class="term-content">
+        <div class="term-line">
+          <span class="prompt">malak@portfolio:~/projects$</span>
+          <span class="cmd">cat scamshield/README.md</span>
+        </div>
+        <article class="project-detail project-detail-long">
+          <h1>ScamShield: AI Personal Fraud Guardian</h1>
+          <p class="project-meta">GenAI Genesis Hackathon · TD Fraud Detection · IBM Best Use of Cloud Services</p>
+
+          <div class="project-body">
+            <p>An AI that learns how <em>you</em> use the internet and explains risk in plain language — so seniors, immigrants, and first-time users can spot scams before they click.</p>
+
+            <hr />
+
+            <h2>Try it</h2>
+            <p>Live app and walkthrough — both open in a new tab.</p>
+            <p class="project-demo-link">
+              <a href="https://demo-sigma-nine-38.vercel.app/" class="btn-link" target="_blank" rel="noopener">Open live demo →</a>
+              <a href="https://www.youtube.com/watch?v=ewUyoqX0jk8&amp;t=79s" class="btn-link" target="_blank" rel="noopener">Watch demo on YouTube →</a>
+            </p>
+
+            <h2>What it does</h2>
+            <ul>
+              <li><strong>Analyze messages, URLs, and images</strong> — Get a risk level, score, reasons, plain-language explanation, and recommended action in seconds.</li>
+              <li><strong>Personalized for you</strong> — Uses your context (e.g. “never used crypto,” known domains) so the same message can get a different, relevant explanation.</li>
+              <li><strong>Voice &amp; live call</strong> — Browser transcribes; we analyze the text. We never intercept the call.</li>
+              <li><strong>Face ID</strong> — Runs in your browser only; no biometrics leave your device.</li>
+              <li><strong>8 languages</strong> — “Is this safe?” in the user’s language (e.g. Chinese, Punjabi, Arabic, Tagalog).</li>
+              <li><strong>Learns from you</strong> — When you mark scam or legit, we feed it back so the model doesn’t repeat the same mistakes.</li>
+            </ul>
+
+            <h2>Screenshots</h2>
+
+            <h3>Analyzer UI</h3>
+            <p class="img-caption">Paste a message or URL and get risk level, reasons, explanation, and recommended action.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="images/scamshield/analyzer.png" alt="ScamShield analyzer UI" class="project-img" loading="lazy" decoding="async" width="800" height="450" /></span>
+            </figure>
+
+            <h3>Login</h3>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="images/scamshield/login.png" alt="ScamShield login page" class="project-img" loading="lazy" decoding="async" width="800" height="450" /></span>
+            </figure>
+
+            <h3>Dashboard</h3>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="images/scamshield/dashboard.png" alt="ScamShield dashboard" class="project-img" loading="lazy" decoding="async" width="800" height="450" /></span>
+            </figure>
+
+            <h3>Live call demo</h3>
+            <p class="img-caption">Browser transcribes; we analyze the text. We never intercept the call.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="images/scamshield/live-call.png" alt="ScamShield live call demo" class="project-img" loading="lazy" decoding="async" width="700" height="394" /></span>
+            </figure>
+
+            <h3>Chrome extension</h3>
+            <p class="img-caption">“Analyze this page” / “Analyze selected text” from any tab.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="images/scamshield/extension.png" alt="ScamShield Chrome extension" class="project-img" loading="lazy" decoding="async" width="500" height="313" /></span>
+            </figure>
+
+            <h2>Quick start</h2>
+
+            <h3>1. Clone and install</h3>
+            <pre><code>git clone https://github.com/malakkhalifaa/genai-genesis-2026.git
+cd genai-genesis-2026
+npm install
+cp .env.example .env.local</code></pre>
+
+            <h3>2. Set up API keys (pick one or more)</h3>
+            <p>Open <code>.env.local</code> and add:</p>
+            <ul>
+              <li><strong>Watsonx (IBM):</strong> <code>WATSONX_AI_APIKEY</code>, <code>WATSONX_PROJECT_ID</code> — see <code>docs/WATSON-IBM.md</code>.</li>
+              <li><strong>Gemini:</strong> <code>GEMINI_API_KEY</code> — <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a>.</li>
+              <li><strong>OpenAI:</strong> <code>OPENAI_API_KEY</code> — <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener">OpenAI API keys</a>.</li>
+            </ul>
+            <p>The analyzer uses <strong>Watsonx first</strong>, then Gemini, then OpenAI (whichever is configured).</p>
+
+            <h3>3. Run</h3>
+            <pre><code>npm run dev</code></pre>
+            <p>Open <strong>http://localhost:3000</strong>. Paste a message or URL → <strong>Analyze</strong> → see risk level, reasons, explanation, and recommended action.</p>
+
+            <h3>4. Optional: Supabase (profiles &amp; history)</h3>
+            <p>For user profiles and report history, set your Supabase URL and anon key in <code>.env.local</code>. See <code>supabase-schema.sql</code> for the schema.</p>
+
+            <h2>Tech stack</h2>
+            <table class="project-table">
+              <thead>
+                <tr><th>Layer</th><th>What we use</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>App</strong></td><td>Next.js (App Router), React, Tailwind</td></tr>
+                <tr><td><strong>API</strong></td><td>Next.js API routes (<code>/api/analyze</code>, <code>/api/profile</code>, <code>/api/report</code>, etc.)</td></tr>
+                <tr><td><strong>AI</strong></td><td>IBM Watsonx (Granite), Google Gemini, or OpenAI — same prompt, env-driven</td></tr>
+                <tr><td><strong>Rules</strong></td><td>Behavioral hints (<code>lib/behavioral.ts</code>), URL/phishing checks (<code>lib/phishing.ts</code>)</td></tr>
+                <tr><td><strong>Data</strong></td><td>Supabase (Postgres) — profiles, reports, history</td></tr>
+                <tr><td><strong>Extension</strong></td><td>Chrome Manifest V3 — “Analyze this page” / “Analyze selected text”</td></tr>
+                <tr><td><strong>Deploy</strong></td><td>Vercel (app + API)</td></tr>
+              </tbody>
+            </table>
+
+            <h2>How the analyzer works (technical)</h2>
+            <p>End-to-end flow from request to response:</p>
+
+            <h3>1. Request handling (<code>POST /api/analyze</code>)</h3>
+            <ul>
+              <li><strong>Input:</strong> <code>contentType</code> (<code>text</code> | <code>url</code> | <code>image</code> | <code>document</code>), plus <code>text</code>, <code>url</code>, <code>imageBase64</code>, or <code>documentBase64</code> as appropriate. Optional <code>userContext</code> (or <code>userId</code> to load profile from Supabase).</li>
+              <li><strong>Validation:</strong> Required fields checked per <code>contentType</code>; 400 if missing.</li>
+              <li><strong>Profile resolution:</strong> If <code>userId</code> is sent, the route fetches the user row from Supabase and maps it to <code>userContext</code> (<code>neverUsedCrypto</code>, <code>knownDomains</code>, <code>typicalContacts</code>, etc.) so the LLM gets real profile data.</li>
+            </ul>
+
+            <h3>2. URL mode: content fetching</h3>
+            <p>For <code>contentType === "url"</code>, we <strong>fetch the page</strong> (server-side): follow redirects, extract visible text and <code>&lt;title&gt;</code>, and pass <code>fetchedPageText</code>, <code>fetchedPageTitle</code>, <code>finalUrl</code>, and <code>urlRedirected</code> into the analyzer. The LLM sees both the URL and the page body so it can detect phishing copy, fake login forms, and urgency language.</p>
+
+            <h3>3. Hint generation (no LLM yet)</h3>
+            <ul>
+              <li><strong>Behavioral</strong> (<code>lib/behavioral.ts</code>): Compares the request to <code>userContext</code>. Examples: if <code>neverUsedCrypto</code> and the content mentions crypto/Bitcoin → add <em>“Unusual for you: you have never used cryptocurrency.”</em> If <code>knownDomains</code> is set and the URL isn’t in the list, that can be surfaced. Output is a list of short hint strings.</li>
+              <li><strong>Phishing</strong> (<code>lib/phishing.ts</code>): Runs only when a URL is present. Checks TLD against a suspicious set (e.g. <code>.tk</code>, <code>.xyz</code>), looks for phishy substrings (e.g. fake login, brand impersonation), and homograph-style character ranges. Returns lines like <em>“[URL check] Suspicious TLD: .tk (medium)”</em>.</li>
+              <li>All hints are concatenated and passed into the prompt as extra context; the LLM uses them to justify risk and reasons.</li>
+            </ul>
+
+            <h3>4. Prompt construction (<code>lib/ai.ts</code>)</h3>
+            <ul>
+              <li><strong>System/instruction block:</strong> A fixed <code>STRUCTURED_PROMPT</code> defines the task (fraud detection for vulnerable users), the exact JSON shape required (<code>riskLevel</code>, <code>riskScore</code>, <code>reasons</code>, <code>explanation</code>, <code>recommendedAction</code>), and scam patterns (urgency, impersonation, verification codes, crypto/gift cards, phishing, etc.). It also states that content can be in any language and that we may request the explanation in a specific locale.</li>
+              <li><strong>Content block:</strong> Built by <code>buildContentPrompt()</code>: the raw content (message, URL + optional fetched page text/title), then <code>userContext</code> (name, neverUsedCrypto, knownDomains, typicalContacts, locale), then the behavioral and phishing hint lines. For non-English content we optionally add a short instruction so the model can return a bilingual or localized explanation.</li>
+              <li><strong>Full prompt:</strong> <code>STRUCTURED_PROMPT + "\n\n" + contentPrompt</code> (and for image/document, the same instructions plus the binary payload). One contiguous text (plus optional image/document) is sent to the model; we do not fine-tune or retrain — we only instruct and supply context per request.</li>
+            </ul>
+
+            <h3>5. LLM invocation and provider order</h3>
+            <ul>
+              <li><strong>Provider order:</strong> If Watsonx is configured (<code>WATSONX_AI_APIKEY</code>, <code>WATSONX_PROJECT_ID</code>) and the request is text/URL (not image/document), we call <strong>Watsonx</strong> (e.g. <code>ibm/granite-3-8b-instruct</code>). Else we use <strong>Gemini</strong> (with model fallback list, e.g. <code>gemini-2.5-flash-lite</code>, <code>gemini-2.0-flash</code>). Else <strong>OpenAI</strong> (<code>gpt-4o-mini</code>). Image and document flows use Gemini (or OpenAI where supported) for vision/document.</li>
+              <li><strong>Parameters:</strong> Low temperature (~0.2) for stable, structured output. Watsonx uses <code>max_new_tokens</code>; Gemini/OpenAI use their default caps.</li>
+              <li><strong>Same prompt:</strong> The exact same prompt text is sent to whichever provider is selected; only the client and model ID change.</li>
+            </ul>
+
+            <h3>6. Response parsing</h3>
+            <ul>
+              <li>The model returns a <strong>string</strong>. We expect a single JSON object; often the model wraps it in markdown code fences or adds prose.</li>
+              <li><strong>parseStructuredResponse():</strong> Strip optional markdown code fences around JSON, locate the first <code>{</code> and last <code>}</code>, slice that substring, and <code>JSON.parse</code> it. We then validate and coerce: <code>riskLevel</code> must be one of <code>low</code> | <code>medium</code> | <code>high</code> | <code>critical</code>; <code>riskScore</code> clamped to 0–100; <code>reasons</code> must be an array of strings; <code>explanation</code> and <code>recommendedAction</code> must be strings. If parsing or validation fails, we return a <strong>safe default</strong> (e.g. <code>riskLevel: "medium"</code>, <code>riskScore: 50</code>, and a short message) so the API never throws a 500 due to malformed model output.</li>
+              <li>Optional: we attach <code>detectedLanguage</code> (e.g. for non-English content) when our language detection says the input wasn’t English.</li>
+            </ul>
+
+            <h3>7. Response to client</h3>
+            <p>The route returns the structured object: <code>{ riskLevel, riskScore, reasons, explanation, recommendedAction }</code> (and optionally <code>detectedLanguage</code>). CORS headers are set so the web app and Chrome extension can call the API from the browser.</p>
+            <p><strong>Summary:</strong> No retraining. We <strong>instruct</strong> the model with a fixed scam-detection prompt and <strong>guide</strong> each request with user context and rule-based hints (behavioral + URL/phishing). The model returns JSON; we parse it defensively and expose a stable API contract.</p>
+
+            <h2>API (for extension / integrations)</h2>
+            <p><strong>POST /api/analyze</strong></p>
+            <ul>
+              <li><strong>Body:</strong> <code>{ contentType: "text" | "url" | "image" | "document", text?, url?, imageBase64?, documentBase64?, documentMimeType?, userContext?, userId? }</code>
+                <ul>
+                  <li><code>userContext</code> can include: <code>name</code>, <code>neverUsedCrypto</code>, <code>neverSentGiftCards</code>, <code>typicalContacts[]</code>, <code>knownDomains[]</code>, <code>locale</code>.</li>
+                  <li>If <code>userId</code> is set and Supabase is configured, the server loads the user profile and overrides <code>userContext</code>.</li>
+                </ul>
+              </li>
+              <li><strong>Response:</strong> <code>{ riskLevel: "low"|"medium"|"high"|"critical", riskScore: number, reasons: string[], explanation: string, recommendedAction: string, detectedLanguage?: string }</code></li>
+            </ul>
+            <p>Example:</p>
+            <pre><code>curl -X POST http://localhost:3000/api/analyze \
+  -H "Content-Type: application/json" \
+  -d '{"contentType":"text","text":"Send $500 in Bitcoin to unlock your account."}'</code></pre>
+
+            <h2>Repo structure (high level)</h2>
+            <pre><code>genai-genesis-2026/
+├── README.md
+├── app/                    # Next.js app (root app dir)
+│   ├── page.tsx
+│   ├── layout.tsx
+│   └── api/                # API routes
+│       ├── analyze/        # Scam analysis (LLM + hints)
+│       ├── profile/        # User profile
+│       └── report/         # Store reports
+├── src/                    # Additional app pages (dashboard, demo, etc.)
+│   └── app/
+├── lib/                    # Shared logic
+│   ├── ai.ts               # LLM (Watsonx / Gemini / OpenAI)
+│   ├── behavioral.ts       # User-context hints
+│   ├── phishing.ts         # URL checks
+│   └── db.ts               # Supabase client
+├── extension/              # Chrome extension
+│   ├── manifest.json
+│   ├── popup.html, popup.js
+│   └── ...
+├── docs/
+│   └── WATSON-IBM.md       # Watsonx setup
+└── supabase-schema.sql     # DB schema</code></pre>
+
+            <h2>Vision &amp; impact</h2>
+            <p><strong>Problem:</strong> Vulnerable communities (seniors, immigrants, first-time users) are targeted the most. They need a simple “Is this safe?” check in plain language — before the click.</p>
+            <p><strong>What we built:</strong> One place to check messages, links, and (optionally) call audio. Personalized explanations (“this is risky for you because…”) and learning from user corrections so the system gets better over time.</p>
+            <p><strong>Hackathon fit:</strong> <strong>TD Fraud Detection</strong> (behavioral + explainability) · <strong>IBM Best Use of Cloud Services</strong> (Watsonx/Granite on IBM Cloud).</p>
+
+            <h2>License</h2>
+            <p>MIT (or your chosen license).</p>
+          </div>
+
+          <div class="project-links">
+            <a href="https://github.com/malakkhalifaa/genai-genesis-2026" class="btn-link" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://demo-sigma-nine-38.vercel.app/" class="btn-link" target="_blank" rel="noopener">Live demo</a>
+            <a href="https://www.youtube.com/watch?v=ewUyoqX0jk8&amp;t=79s" class="btn-link" target="_blank" rel="noopener">YouTube</a>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer class="term-footer">
+    <span id="year"></span> · <a href="index.html">Malak</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

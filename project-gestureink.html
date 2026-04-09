@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gesture Ink — Malak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="terminal-window">
+    <header class="term-titlebar">
+      <div class="term-dots">
+        <span class="dot close"></span>
+        <span class="dot min"></span>
+        <span class="dot max"></span>
+      </div>
+      <span class="term-title">project: gestureink — Malak</span>
+      <a href="index.html#projects" class="back-link term-back">← index</a>
+      <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
+    </header>
+
+    <main class="term-body">
+      <div class="term-content">
+        <div class="term-line">
+          <span class="prompt">malak@portfolio:~/projects$</span>
+          <span class="cmd">cat gestureink/README.md</span>
+        </div>
+        <article class="project-detail project-detail-long">
+          <h1>Gesture Ink – Hand Gesture Writing &amp; Drawing System</h1>
+          <p class="project-meta">Python · OpenCV · MediaPipe · cvzone · MQTT · NumPy · Arduino · ESP32</p>
+
+          <div class="project-body">
+            <p>Gesture Ink is a real-time, no-touch writing and drawing system that lets users write or draw in mid-air using only natural hand gestures. The system combines computer vision, wearable sensing, and MQTT-based communication to create a seamless, hands-free interaction experience.</p>
+            <p>The project was built and demonstrated at <strong>MakeUofT 2025</strong>, Canada’s largest makeathon, where it received recognition for its innovation in gesture-based interfaces and IoT integration.</p>
+            <p>Gesture Ink is designed with both technical depth and human impact in mind. It explores how intuitive motion, tactile feedback, and real-time vision systems can replace traditional input devices in creative, assistive, and presentation-based environments.</p>
+
+            <h2>Demo</h2>
+            <p>A full system demonstration, including live gesture drawing and glove-based color control, is available on YouTube.</p>
+            <p class="project-demo-link">
+              <a href="https://youtu.be/lAq6rWafrmU" class="btn-link" target="_blank" rel="noopener">Watch demo on YouTube →</a>
+            </p>
+
+            <h3>Live gesture drawing</h3>
+            <p class="img-caption">Mid-air strokes tracked and rendered on the digital canvas.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/432637c5-4906-4aa1-b9c5-b3850cd591fe" alt="Live gesture drawing in Gesture Ink" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+              <figcaption>Gesture drawing</figcaption>
+            </figure>
+
+            <h3>Real-time color control from glove sensors</h3>
+            <p class="img-caption">RGB values from the wearable stream into brush color on the canvas.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/93cde095-60f9-4f15-bd4d-9df8ed427bb9" alt="Color change via glove sensors" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+              <figcaption>Color change</figcaption>
+            </figure>
+
+            <h3>Team presentation at MakeUofT 2025</h3>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="https://github.com/user-attachments/assets/cd8db60f-47e6-4059-8a00-c65dbf8d277c" alt="Team presentation at MakeUofT 2025" class="project-img" loading="lazy" decoding="async" width="900" height="506" /></span>
+              <figcaption>Team presentation</figcaption>
+            </figure>
+
+            <hr />
+
+            <h2>What Gesture Ink does</h2>
+            <p>Gesture Ink enables users to draw or write without touching a screen. A webcam tracks hand movements in real time, interprets gestures, and converts them into strokes on a digital canvas. A wearable glove communicates additional sensor data wirelessly, allowing dynamic color changes and tactile feedback.</p>
+            <p>The result is a natural interaction loop where the user sees, feels, and controls their drawing entirely through motion.</p>
+
+            <h2>Core capabilities</h2>
+
+            <h3>Gesture-based writing and drawing</h3>
+            <p>Hand gestures are mapped to drawing actions using real-time hand landmark detection.</p>
+            <p>Two fingers raised initiates drawing mode. A single finger continues the stroke, allowing precise control. A three-finger gesture triggers an undo operation, while a closed fist stops drawing entirely. These gestures were chosen to be intuitive and easy to remember during live use.</p>
+
+            <h3>Real-time color control via wearable sensors</h3>
+            <p>An Arduino-based glove streams RGB sensor values over MQTT. These values directly control the brush color on the drawing canvas, allowing users to change colors mid-stroke without interacting with any physical interface.</p>
+            <p>This enables expressive, uninterrupted drawing and was a key highlight during the live MakeUofT demo.</p>
+
+            <h3>Boundary detection with tactile feedback</h3>
+            <p>The system continuously monitors hand position relative to the drawing area. When the user moves out of bounds, a message is published over MQTT to trigger a buzzer on the glove. This provides immediate tactile feedback, helping users stay spatially aware without looking away from their work.</p>
+
+            <h3>Real-time MQTT communication</h3>
+            <p>MQTT acts as the backbone of the system’s communication layer. The Python application subscribes to live glove sensor data while publishing control signals such as buzzer activation. This architecture keeps the vision system and wearable hardware loosely coupled, scalable, and responsive.</p>
+
+            <h3>Computer vision and hand tracking</h3>
+            <p>Gesture Ink uses OpenCV for video capture and image processing, combined with MediaPipe (via cvzone) for accurate hand landmark detection. This allows robust tracking of finger positions, gesture states, and movement trajectories in real time.</p>
+
+            <h3>Undo and reset interactions</h3>
+            <p>Undo and canvas reset operations are handled entirely through gestures, maintaining the no-touch design philosophy. The system keeps a stroke history to support smooth and predictable undo behavior.</p>
+
+            <h2>Technical architecture</h2>
+            <p>The system is divided into three primary layers.</p>
+            <ul>
+              <li><strong>Vision layer</strong> — webcam input, hand detection, gesture classification, and stroke rendering. Implemented in Python using OpenCV, cvzone, MediaPipe, and NumPy.</li>
+              <li><strong>Communication layer</strong> — MQTT for data between the vision system and the wearable glove: sensor values, control signals, and feedback events with low latency.</li>
+              <li><strong>Hardware layer</strong> — an ESP32 or ESP8266-based glove with flex sensors, RGB controls, and a buzzer. Firmware in C++ using the Arduino framework.</li>
+            </ul>
+
+            <h2>Technology stack</h2>
+
+            <h3>Software</h3>
+            <p>Python 3.12 or higher drives the main application logic. OpenCV handles video input and drawing. cvzone and MediaPipe provide hand tracking and landmark detection. NumPy supports efficient image and data manipulation. MQTT uses the paho-mqtt library.</p>
+
+            <h3>Hardware</h3>
+            <p>The wearable glove uses an ESP32 or ESP8266. Flex sensors detect finger movement; RGB inputs control brush color. A buzzer provides tactile feedback for boundary alerts and system events. A standard webcam captures hand tracking.</p>
+
+            <h3>Languages and protocols</h3>
+            <p>Python for the vision and application layer; C++ for Arduino firmware; MQTT for real-time wireless communication between components.</p>
+
+            <h2>Hardware setup overview</h2>
+            <p>Upload the glove firmware to the ESP32 using the Arduino IDE. Connect the flex sensors, RGB inputs, and buzzer according to the firmware configuration. Set up an MQTT broker such as Mosquitto and configure the broker address in both the firmware and Python application.</p>
+            <p>Once connected, start the Python script and ensure the webcam feed and MQTT messages are active.</p>
+
+            <h2>Installation</h2>
+            <p>Install the required Python dependencies using pip:</p>
+            <pre><code>pip install opencv-python numpy cvzone paho-mqtt</code></pre>
+            <p>Ensure your MQTT broker is running before launching the application.</p>
+
+            <h2>Future directions</h2>
+            <p>Gesture Ink is designed as a foundation rather than a finished product.</p>
+            <ul>
+              <li><strong>Handwriting recognition</strong> — convert air-written strokes into editable text (ML models or external APIs).</li>
+              <li><strong>Expressive dynamics</strong> — pressure-sensitive or speed-based brush behavior.</li>
+              <li><strong>VR and AR</strong> — 3D whiteboard or immersive collaboration.</li>
+              <li><strong>Cloud sync</strong> — persist drawings and notes across devices and sessions.</li>
+            </ul>
+
+            <h2>Final thoughts</h2>
+            <p>Gesture Ink explores a future where interaction is defined by movement rather than hardware. By combining computer vision, wearable sensing, and real-time communication, the project demonstrates how natural gestures can become a powerful input modality.</p>
+            <p>Built at <strong>MakeUofT 2025</strong>, Gesture Ink reflects both technical rigor and a human-centered design mindset — a step toward more accessible, expressive, and intuitive ways of interacting with digital systems.</p>
+
+            <blockquote class="project-quote">Interaction defined by movement — vision, wearables, and MQTT working together for hands-free creation.</blockquote>
+          </div>
+
+          <div class="project-links">
+            <a href="#" class="btn-link" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer class="term-footer">
+    <span id="year"></span> · <a href="index.html">Malak</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

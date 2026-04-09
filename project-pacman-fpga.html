@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacman FPGA — Malak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="terminal-window">
+    <header class="term-titlebar">
+      <div class="term-dots">
+        <span class="dot close"></span>
+        <span class="dot min"></span>
+        <span class="dot max"></span>
+      </div>
+      <span class="term-title">project: pacman-fpga — Malak</span>
+      <a href="index.html#projects" class="back-link term-back">← index</a>
+      <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
+    </header>
+
+    <main class="term-body">
+      <div class="term-content">
+        <div class="term-line">
+          <span class="prompt">malak@portfolio:~/projects$</span>
+          <span class="cmd">cat pacman-fpga/README.md</span>
+        </div>
+        <article class="project-detail project-detail-long">
+          <h1>Pacman FPGA Implementation</h1>
+          <p class="project-meta">Verilog HDL · FPGA · VGA · PS/2 · I2S · ECE241</p>
+
+          <div class="project-body">
+            <p>A hardware implementation of the classic Pacman arcade game using Verilog HDL and FPGA technology. This project demonstrates real-time video generation, collision detection, PS/2 keyboard interfacing, and audio processing through dedicated hardware modules.</p>
+
+            <h2>Project overview</h2>
+            <p>This implementation runs entirely on an FPGA without the use of a general-purpose processor, leveraging parallel hardware execution for game logic, rendering, and peripheral communication. The system generates VGA video output at 160×120 resolution with 3-bit color depth, processes PS/2 keyboard input for player control, and supports audio output through an I2S audio codec interface.</p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="images/pacman-fpga/overview.png" alt="Pacman FPGA hardware setup and display" class="project-img" loading="lazy" decoding="async" width="1728" height="892" /></span>
+            </figure>
+
+            <h2>Demo</h2>
+            <p>Demonstration video — gameplay, hardware connections, and system functionality (opens in a new tab).</p>
+            <p class="project-demo-link">
+              <a href="https://www.youtube.com/watch?v=6VuTFfgRM2U" class="btn-link" target="_blank" rel="noopener">Watch demo on YouTube →</a>
+            </p>
+
+            <h2>Hardware architecture</h2>
+
+            <h3>Top-level module structure</h3>
+            <p>The design follows a hierarchical module architecture where the <code>top_level.v</code> module serves as the primary integration point for all subsystems:</p>
+            <pre><code>top_level
+├── pacman_logic
+│   ├── PS2_Demo (keyboard interface)
+│   ├── pacman_movement (FSM controller)
+│   ├── connect_vga (collision detection)
+│   └── count_down (timer logic)
+├── pacman_pixel (VGA rendering engine)
+├── pacmaze_screen (start screen renderer)
+├── audio_demo (I2S audio controller)
+├── count_down (global timer)
+└── seg7_decoder (score display)</code></pre>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded><img src="images/pacman-fpga/hardware-arch.png" alt="FPGA board and hardware architecture" class="project-img" loading="lazy" decoding="async" width="819" height="635" /></span>
+            </figure>
+
+            <h3>Core modules</h3>
+
+            <h4>Game logic controller (<code>pacman_logic.v</code>)</h4>
+            <p>The game logic module orchestrates player input processing, movement state management, and collision detection. It implements a finite state machine that transitions between idle, movement, and collision states based on keyboard input and wall detection results.</p>
+            <ul>
+              <li><strong>Input processing:</strong> Decodes PS/2 keyboard scan codes into directional commands</li>
+              <li><strong>State management:</strong> Maintains current game state (active, ended, paused)</li>
+              <li><strong>Collision detection interface:</strong> Communicates with VGA module for pixel-perfect collision detection</li>
+              <li><strong>Score tracking:</strong> Increments score counter upon successful pellet collection</li>
+            </ul>
+
+            <h4>Movement controller (<code>pacman_movement.v</code>)</h4>
+            <p>Implements Pacman movement mechanics using an FSM. The module calculates movement vectors based on player input and maze geometry, performing multi-point collision checks so the character cannot pass through walls.</p>
+            <p><strong>Collision detection algorithm:</strong></p>
+            <ul>
+              <li>Samples 5 points along the leading edge of the character sprite</li>
+              <li>Converts 2D coordinates to 1D memory address: <code>address = (y × 160) + x</code></li>
+              <li>Checks maze data ROM for wall presence at each sample point</li>
+              <li>Blocks movement if any sample point detects a collision</li>
+            </ul>
+            <pre><code>// Multi-point collision checking example
+assign maze_address = (pacman_y * 17'd160) + pacman_x;
+assign up_pixel_0 = maze_address - 17'd482;
+assign up_pixel_1 = maze_address - 17'd481;
+// ... additional sample points</code></pre>
+
+            <h4>VGA rendering system</h4>
+            <p>Dual VGA rendering paths for start screen and game screen, with multiplexing controlled by game state.</p>
+            <p><strong>Game screen renderer (<code>pacman_pixel.v</code>):</strong> Real-time pixel generation synchronized to VGA timing; sprite rendering with coordinate transforms; background maze from ROM; dynamic colors by game state.</p>
+            <p><strong>Start screen renderer (<code>pacmaze_screen.v</code>):</strong> Loads background from MIF; resolution 160×120; 3 bits per pixel (8 colors); background file <code>titlefinal.mif</code>.</p>
+
+            <h4>PS/2 keyboard interface (<code>PS2_Demo.v</code>)</h4>
+            <ul>
+              <li><strong>Protocol:</strong> Clock stretching, data packet reception, scan code translation</li>
+              <li><strong>Scan code decoding:</strong> Directional commands (WASD or arrows)</li>
+              <li><strong>Debouncing:</strong> Reduces spurious input</li>
+            </ul>
+
+            <h4>Audio system (<code>audio_demo.v</code>)</h4>
+            <ul>
+              <li><strong>I2C interface:</strong> Configures codec via <code>FPGA_I2C_SDAT</code> / <code>FPGA_I2C_SCLK</code></li>
+              <li><strong>Streaming:</strong> Samples via <code>AUD_DACDAT</code> at 48 kHz</li>
+              <li><strong>Clock generation:</strong> Master audio clock <code>AUD_XCK</code> for codec sync</li>
+            </ul>
+
+            <h4>Timer and display</h4>
+            <p><strong><code>count_down.v</code>:</strong> Prescaled divider from 50 MHz; timer on HEX2/HEX3; timeout when zero.</p>
+            <p><strong><code>seg7_decoder.v</code>:</strong> 4-bit score to 7-segment on HEX1 (hex 0–F).</p>
+
+            <h2>Signal interface</h2>
+            <p><strong>Clock and reset:</strong> <code>CLOCK_50</code> (50 MHz); <code>KEY[0]</code> active-low reset.</p>
+            <p><strong>Switches:</strong> <code>SW[0]</code> audio; <code>SW[1]</code> game restart; <code>SW[3]</code> audio mode.</p>
+            <p><strong>VGA:</strong> <code>VGA_CLK</code> 25 MHz pixel clock; <code>VGA_HS</code> / <code>VGA_VS</code>; <code>VGA_BLANK_N</code>, <code>VGA_SYNC_N</code>; <code>VGA_R/G/B[7:0]</code>.</p>
+            <p><strong>PS/2:</strong> <code>PS2_CLK</code>, <code>PS2_DAT</code> bidirectional.</p>
+            <p><strong>Audio:</strong> <code>AUD_XCK</code>, <code>AUD_DACDAT</code>, <code>AUD_ADCDAT</code>, <code>AUD_BCLK</code>, <code>AUD_DACLRCK</code>, <code>AUD_ADCLRCK</code>, I2C to codec.</p>
+            <p><strong>Displays:</strong> <code>HEX1</code>–<code>HEX5</code> 7-segment; <code>LEDR[9:0]</code> status LEDs.</p>
+
+            <h2>Game mechanics</h2>
+            <p><strong>Movement:</strong> Grid-based with pixel positioning; orthogonal directions only; collision prevents wall traversal.</p>
+            <p><strong>Coordinates:</strong> X 9-bit (0–159), Y 8-bit (0–119); origin top-left (0,0).</p>
+            <p><strong>Scoring:</strong> 4-bit counter on pellet collection; max 15 (hex F) on HEX1.</p>
+            <p><strong>States:</strong> <code>START_SCREEN</code>, <code>PLAYING</code>, <code>COLLISION</code>, <code>GAME_OVER</code> — driven by timer, win, reset, and <code>SW[1]</code>.</p>
+
+            <h2>Implementation details</h2>
+            <p><strong>Clock domains:</strong> 50 MHz system logic; 25 MHz VGA; audio/I2S domain — synchronizers on asynchronous inputs where needed.</p>
+            <p><strong>Memory:</strong> Maze ROM 160×120 × 1 bit; linear address <code>(y × 160) + x</code>. Title MIF 160×120 × 3 bpp.</p>
+            <p><strong>Performance:</strong> ~60 Hz VGA; ~25 MHz pixel clock; collision checks in parallel with pipeline where applicable; input latency ~2–3 cycles.</p>
+
+            <h2>Build and deployment</h2>
+            <ul>
+              <li>Intel Quartus Prime (or compatible); target Cyclone IV or compatible</li>
+              <li>VGA monitor, PS/2 keyboard, WM8731-class codec</li>
+              <li>Add sources from <code>Final Submission Files/</code>; pin assignments per board; timing for 50 MHz / 25 MHz</li>
+              <li>Files: <code>.qsf</code>, <code>.sdc</code>, <code>.mif</code> for maze and backgrounds</li>
+            </ul>
+
+            <h2>Testing and verification</h2>
+            <p>Functional tests: keyboard → movement, wall collision, timer, score, state transitions, VGA timing, audio codec config. STA for setup/hold and cross-domain paths.</p>
+
+            <h2>Project structure</h2>
+            <pre><code>Project_ECE241/
+├── Final Submission Files/
+│   ├── top_level.v
+│   ├── pacman_logic.v
+│   ├── pacman_movement.v
+│   ├── pacman_pixel.v
+│   ├── pacmaze_screen.v
+│   ├── connect_vga.v
+│   ├── PS2_Demo.v
+│   ├── audio_demo.v
+│   ├── count_down.v
+│   ├── delay_counter.v
+│   ├── intel_sound.v
+│   └── seg7_decoder.v
+├── docs/images/
+└── README.md</code></pre>
+
+            <h2>Technical specifications</h2>
+            <table class="project-table">
+              <thead>
+                <tr><th>Parameter</th><th>Specification</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Target FPGA</td><td>Intel/Altera Cyclone IV (or compatible)</td></tr>
+                <tr><td>System clock</td><td>50 MHz</td></tr>
+                <tr><td>VGA resolution</td><td>160 × 120</td></tr>
+                <tr><td>Refresh rate</td><td>60 Hz</td></tr>
+                <tr><td>Color depth</td><td>3 bpp (8 colors)</td></tr>
+                <tr><td>Pixel clock</td><td>25 MHz</td></tr>
+                <tr><td>Audio sample rate</td><td>48 kHz</td></tr>
+                <tr><td>PS/2 clock</td><td>~10–16.7 kHz</td></tr>
+                <tr><td>Score range</td><td>0–15 (4-bit)</td></tr>
+                <tr><td>Timer</td><td>1 second per count</td></tr>
+              </tbody>
+            </table>
+
+            <h2>Future enhancements</h2>
+            <ul>
+              <li>Higher resolution (e.g. 320×240) and deeper color</li>
+              <li>Ghost AI with pathfinding</li>
+              <li>Power pellets and multiple mazes</li>
+              <li>Non-volatile high scores; synced SFX</li>
+            </ul>
+
+            <h2>References</h2>
+            <ul>
+              <li>VGA video timing standards</li>
+              <li>PS/2 keyboard protocol</li>
+              <li>I2S audio interface</li>
+              <li>Intel/Altera FPGA documentation</li>
+            </ul>
+
+            <h2>License</h2>
+            <p>Developed for educational purposes as part of ECE241 coursework.</p>
+          </div>
+
+          <div class="project-links">
+            <a href="https://www.youtube.com/watch?v=6VuTFfgRM2U" class="btn-link" target="_blank" rel="noopener">YouTube demo</a>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer class="term-footer">
+    <span id="year"></span> · <a href="index.html">Malak</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

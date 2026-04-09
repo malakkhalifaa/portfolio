@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malak — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="vscode-layout">
+    <aside class="vscode-sidebar" aria-label="Explorer">
+      <div class="vscode-sidebar-header">
+        <span class="vscode-sidebar-title">EXPLORER</span>
+        <button type="button" class="vscode-sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">≡</button>
+      </div>
+      <nav class="vscode-tree">
+        <div class="vscode-tree-root">
+          <button type="button" class="vscode-tree-folder is-open" aria-expanded="true">
+            <span class="vscode-tree-chevron">▼</span>
+            <span class="vscode-tree-icon">📁</span>
+            <span class="vscode-tree-label">PORTFOLIO</span>
+          </button>
+          <div class="vscode-tree-children">
+            <a href="#about" class="vscode-tree-item" data-section="about"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">about</span></a>
+            <a href="#education" class="vscode-tree-item" data-section="education"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">education</span></a>
+            <a href="#skills" class="vscode-tree-item" data-section="skills"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">skills</span></a>
+            <button type="button" class="vscode-tree-folder is-open"><span class="vscode-tree-chevron">▼</span><span class="vscode-tree-icon">📁</span><span class="vscode-tree-label">projects</span></button>
+            <div class="vscode-tree-children">
+              <a href="project-giselle.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">giselle</span></a>
+              <a href="project-gestureink.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">gestureink</span></a>
+              <a href="project-pacman-fpga.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon" aria-hidden="true">🎮</span><span class="vscode-tree-label">pacman-fpga</span></a>
+              <a href="project-scamshield.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon">📄</span><span class="vscode-tree-label">scamshield</span></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </aside>
+    <div class="vscode-main">
+      <div class="terminal-window" id="terminal-window">
+        <header class="term-titlebar">
+          <div class="term-dots"><span class="dot close"></span><span class="dot min"></span><span class="dot max"></span></div>
+          <button type="button" class="term-explorer-toggle" id="explorer-toggle-mobile" aria-label="Open Explorer">≡</button>
+          <span class="term-title">portfolio</span>
+          <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
+        </header>
+        <main class="term-body">
+          <div class="term-content">
+            <section class="section-hero" id="welcome">
+              <h1 class="hero-name">Malak</h1>
+              <p class="hero-tagline">Portfolio</p>
+            </section>
+
+            <section class="term-section-start" id="about">
+              <h2 class="term-h2">About</h2>
+              <div class="term-output-section about-content soft-panel">
+                <div class="soft-prose">
+                  <p class="soft-lede">hey — i’m studying computer engineering at u of t (PEY co‑op track). this site is a tiny snapshot of what i’ve been learning &amp; building.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="term-section-start" id="education">
+              <h2 class="term-h2 term-h2-soft">education</h2>
+              <div class="term-output-section about-content soft-panel">
+                <div class="soft-prose">
+                  <p class="soft-lede"><span class="soft-accent">bachelor of applied science</span> · computer engineering + PEY co‑op · university of toronto</p>
+                  <p class="soft-muted soft-tight">minors: artificial intelligence · engineering business</p>
+                  <p class="soft-mini-heading">some courses along the way</p>
+                  <ul class="soft-list">
+                    <li>deep learning fundamentals &amp; intro — pytorch, numpy</li>
+                    <li>programming fundamentals — c++</li>
+                    <li>computer fundamentals — c</li>
+                    <li>software design &amp; communication — c++, git</li>
+                    <li>computer organization — assembly</li>
+                    <li>digital systems — verilog, fpgas</li>
+                    <li>linear algebra — matlab</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="term-section-start" id="skills">
+              <h2 class="term-h2 term-h2-soft">skills</h2>
+              <div class="term-output-section about-content soft-panel">
+                <div class="soft-prose soft-skills">
+                  <div class="soft-skill-row">
+                    <span class="soft-label">languages</span>
+                    <p>python · c · c++ · sql · javascript · typescript · html5 · css3 · verilog</p>
+                  </div>
+                  <div class="soft-skill-row">
+                    <span class="soft-label">ai / ml</span>
+                    <p>pytorch · tensorflow · numpy · opencv · langchain · langgraph · rag · neural odes · llm agents</p>
+                  </div>
+                  <div class="soft-skill-row">
+                    <span class="soft-label">web / frameworks</span>
+                    <p>react · angular · bootstrap · asp.net core · graphql · node.js · three.js</p>
+                  </div>
+                  <div class="soft-skill-row">
+                    <span class="soft-label">databases &amp; tools</span>
+                    <p>mysql · chromadb · qdrant · git · github · latex · blender · devexpress · ollama</p>
+                  </div>
+                  <div class="soft-skill-row">
+                    <span class="soft-label">systems / hardware</span>
+                    <p>verilog · risc-v · digital logic · computer architecture · rtl design</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="term-section-start" id="projects">
+              <h2 class="term-h2">Projects</h2>
+              <div class="term-output-section term-output-projects">
+                <div class="project-grid">
+                  <a href="project-giselle.html" class="project-card">
+                    <div class="project-card-body">
+                      <strong class="project-card-title">GISelle</strong>
+                      <p class="project-card-desc">Safety-aware navigation for women</p>
+                      <span class="project-card-arrow" aria-hidden="true">→</span>
+                      <div class="project-card-tags"><span>C++</span><span>EZGL</span></div>
+                    </div>
+                  </a>
+                  <a href="project-gestureink.html" class="project-card">
+                    <div class="project-card-body">
+                      <strong class="project-card-title">Gesture Ink</strong>
+                      <p class="project-card-desc">MakeUofT 2025 — mid-air drawing, MQTT glove, vision</p>
+                      <span class="project-card-arrow" aria-hidden="true">→</span>
+                      <div class="project-card-tags"><span>Python</span><span>OpenCV</span></div>
+                    </div>
+                  </a>
+                  <a href="project-pacman-fpga.html" class="project-card">
+                    <div class="project-card-body">
+                      <strong class="project-card-title">Pacman FPGA</strong>
+                      <p class="project-card-desc">Verilog VGA game — PS/2, I2S, Cyclone IV</p>
+                      <span class="project-card-arrow" aria-hidden="true">→</span>
+                      <div class="project-card-tags"><span>Verilog</span><span>FPGA</span></div>
+                    </div>
+                  </a>
+                  <a href="project-scamshield.html" class="project-card">
+                    <div class="project-card-body">
+                      <strong class="project-card-title">ScamShield</strong>
+                      <p class="project-card-desc">AI fraud guardian — GenAI Genesis, Watsonx, Next.js</p>
+                      <span class="project-card-arrow" aria-hidden="true">→</span>
+                      <div class="project-card-tags"><span>Next.js</span><span>TypeScript</span></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+  <footer class="term-footer"><span id="year"></span> · Malak</footer>
+  <script src="script.js"></script>
+</body>
+</html>
