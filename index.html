@@ -24,6 +24,7 @@
             <span class="vscode-tree-label">Portfolio</span>
           </button>
           <div class="vscode-tree-children">
+            <a href="#experience" class="vscode-tree-item" data-section="experience"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Experience</span></a>
             <a href="#projects" class="vscode-tree-item" data-section="projects"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Projects</span></a>
             <button type="button" class="vscode-tree-folder is-open" aria-expanded="true">
               <span class="vscode-tree-chevron">▼</span>
@@ -59,6 +60,137 @@
         </header>
         <main class="term-body">
           <div class="term-content term-content--projects-only">
+            <section class="term-section-start experience-section" id="experience" aria-labelledby="experience-heading">
+              <header class="experience-header">
+                <h2 class="term-h2 term-h2-experience" id="experience-heading">Experience</h2>
+              </header>
+              <div class="experience-stack">
+                <article class="experience-card">
+                  <div class="experience-card__top">
+                    <div class="experience-card__titles">
+                      <h3 class="experience-card__role">Machine Learning Engineer</h3>
+                      <p class="experience-card__org">NeuroTech UofT</p>
+                    </div>
+                    <div class="experience-card__meta">
+                      <span class="experience-card__dates">September 2025–Present</span>
+                      <span class="experience-card__location">Toronto, ON</span>
+                    </div>
+                  </div>
+                  <div class="experience-media experience-media--neurotech">
+                    <a href="https://github.com/neurotechuoft/NeuronMove_2024-25" class="experience-media__about" target="_blank" rel="noopener noreferrer">GitHub: neurotechuoft/NeuronMove_2024-25</a>
+                    <div class="experience-media__grid">
+                      <figure class="experience-media__fig experience-media__fig--span-full">
+                        <img
+                          src="images/neurotech/design-freeze-welcome.png"
+                          alt="NeuroTech UofT Design Freeze — group in the presentation room with welcome slides on the screens"
+                          width="1600"
+                          height="900"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <figcaption>Design Freeze — welcome &amp; group</figcaption>
+                      </figure>
+                      <figure class="experience-media__fig">
+                        <img
+                          src="images/neurotech/team.png"
+                          alt="NeuroTech UofT team — group photo in a bright lounge with city windows"
+                          width="1200"
+                          height="800"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <figcaption>Team · NeuroTech UofT</figcaption>
+                      </figure>
+                      <figure class="experience-media__fig">
+                        <img
+                          src="images/neurotech/design-freeze.png"
+                          alt="NeuroTech UofT — Design Freeze presentation at the podium"
+                          width="1200"
+                          height="800"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <figcaption>Design Freeze presentation</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                  <ul class="experience-bullets">
+                    <li>Built an ML pipeline for Parkinson’s tremor prediction from smartwatch IMU data (PADS), supporting the project goal of real-time tremor mitigation for PD patients.</li>
+                    <li>Designed and implemented time- and frequency-domain feature engineering over 132 channels and 976 timepoints, producing a 3k+ dimensional feature set to feed downstream classification for tremor detection.</li>
+                    <li>Trained and evaluated a Random Forest classifier (100 trees) for 3-class (Healthy / Parkinson’s / Other movement disorders), using 5-fold cross-validation and reporting accuracy, precision, and recall to establish a baseline for tremor-prediction systems.</li>
+                    <li>Developed data loading, validation, and training scripts in Python with pandas, NumPy, and scikit-learn, enabling reproducible model iteration toward hardware-ready tremor prediction.</li>
+                  </ul>
+                </article>
+                <article class="experience-card">
+                  <div class="experience-card__top">
+                    <div class="experience-card__titles">
+                      <h3 class="experience-card__role">Machine Learning Researcher</h3>
+                      <p class="experience-card__org">UC Berkeley &amp; Algoverse AI Research Program</p>
+                    </div>
+                    <div class="experience-card__meta">
+                      <span class="experience-card__dates">September 2025–Present</span>
+                      <span class="experience-card__location">Palo Alto, California, USA · Remote</span>
+                    </div>
+                  </div>
+                  <div class="experience-media experience-media--link-only">
+                    <a href="https://algoverseairesearch.org/about" class="experience-media__about" target="_blank" rel="noopener noreferrer">Algoverse AI Research — about the program</a>
+                  </div>
+                  <ul class="experience-bullets">
+                    <li>Lead Author on “Forecasting Drug Response from Ophthalmic Biomarkers with Neural ODEs” (manuscript in preparation for NeurIPS).</li>
+                    <li>Designed a trajectory-marginalized Neural ODE framework combining a VAE encoder, GRU latent initialization, and continuous-time ODE dynamics to forecast longitudinal biomarkers.</li>
+                    <li>Implemented end-to-end pipeline in PyTorch + torchdiffeq, optimized with Adam and adaptive solvers, incorporating reconstruction, KL divergence, and drug-response regression losses.</li>
+                    <li>Conducted experiments on the OLIVES dataset (~82k biomarker records), benchmarking against LSTMs, Transformers, and Random Forests; evaluated using MSE, MAE, C-index, and causal consistency metrics.</li>
+                    <li>Performed causal intervention simulations and counterfactual forecasting, demonstrating biomarker-specific monotonicity, dose–response correlations, and biologically interpretable causal pathways.</li>
+                  </ul>
+                </article>
+                <article class="experience-card">
+                  <div class="experience-card__top">
+                    <div class="experience-card__titles">
+                      <h3 class="experience-card__role">Webmaster &amp; Programming Director</h3>
+                      <p class="experience-card__org">University of Toronto Engineering Kompetitions</p>
+                    </div>
+                    <div class="experience-card__meta">
+                      <span class="experience-card__dates">August 2024–Present</span>
+                      <span class="experience-card__location">Toronto, ON</span>
+                    </div>
+                  </div>
+                  <div class="experience-media experience-media--utek">
+                    <a href="https://utek.skule.ca/about.html" class="experience-media__about" target="_blank" rel="noopener noreferrer">UTEK — utek.skule.ca/about</a>
+                    <div class="experience-media__grid">
+                      <figure class="experience-media__fig">
+                        <img
+                          src="images/utek/programming-awards.png"
+                          alt="UTEK programming competition — participants with certificates; slide reads PROGRAMMING"
+                          width="960"
+                          height="540"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <figcaption>Programming track</figcaption>
+                      </figure>
+                      <figure class="experience-media__fig">
+                        <img
+                          src="images/utek/planning-team.png"
+                          alt="UTEK planning team with banner — University of Toronto Engineering Kompetitions"
+                          width="960"
+                          height="540"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <figcaption>Planning team</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                  <ul class="experience-bullets">
+                    <li>Designed and authored the full UTEK 2026 Programming Competition Package focused on Sustainable Medical Logistics.</li>
+                    <li>Created a dual-focus challenge on hospital supply optimization and emergency response routing with multi-agent coordination and dynamic rerouting.</li>
+                    <li>Structured competition logistics including briefing protocols, submission standards, plagiarism policies, and Q&amp;A governance.</li>
+                    <li>Developed a 100-point rubric evaluating algorithms, adaptability, usability, and code quality.</li>
+                    <li>Revamped and maintained the UTEK website using HTML, CSS, JavaScript, and Plesk, supporting 2,000+ annual users and increasing 2024 registrations by 236% through UX improvements.</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
             <section class="term-section-start projects-section projects-section--solo" id="projects">
               <header class="projects-header">
                 <h2 class="term-h2 term-h2-projects">Things I’ve built</h2>
