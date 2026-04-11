@@ -35,7 +35,7 @@
               <span class="vscode-tree-label">Hardware</span>
             </button>
             <div class="vscode-tree-children">
-              <a href="project-pacman-fpga.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file vscode-tree-icon-file--fun" aria-hidden="true"></span><span class="vscode-tree-label">Pacman FPGA</span></a>
+              <a href="project-pacman-fpga.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file vscode-tree-icon-file--fun" aria-hidden="true"></span><span class="vscode-tree-label">ECE241 · Pacman</span></a>
               <a href="project-ece243-tron.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">ECE243 TRON</span></a>
             </div>
             <button type="button" class="vscode-tree-folder is-open" aria-expanded="true">
@@ -92,6 +92,7 @@
                       <span class="experience-card__location">Toronto, ON</span>
                     </div>
                   </div>
+                  <p class="experience-card__gist">End-to-end <strong>wearables ML</strong> for <strong>Parkinson’s tremor</strong>: IMU features → <strong>Random Forest</strong> baseline, aimed at <strong>real-time mitigation</strong> on hardware.</p>
                   <div class="experience-media experience-media--neurotech">
                     <a href="https://github.com/neurotechuoft/NeuronMove_2024-25" class="experience-media__about" target="_blank" rel="noopener noreferrer">GitHub: neurotechuoft/NeuronMove_2024-25</a>
                     <div class="experience-media__grid">
@@ -148,6 +149,7 @@
                       <span class="experience-card__location">Palo Alto, California, USA · Remote</span>
                     </div>
                   </div>
+                  <p class="experience-card__gist"><strong>Neural ODEs</strong> on longitudinal eye data — <strong>OLIVES</strong> scale, <strong>counterfactual</strong> drug simulations, manuscript in prep toward <strong>NeurIPS</strong>.</p>
                   <div class="experience-media experience-media--link-only">
                     <a href="https://algoverseairesearch.org/about" class="experience-media__about" target="_blank" rel="noopener noreferrer">Algoverse AI Research — about the program</a>
                   </div>
@@ -170,6 +172,7 @@
                       <span class="experience-card__location">Toronto, ON</span>
                     </div>
                   </div>
+                  <p class="experience-card__gist"><strong>UTEK</strong> programming track: full <strong>competition package</strong>, rubrics, and logistics — plus the <strong>public site</strong> for <strong>2k+</strong> competitors / year.</p>
                   <div class="experience-media experience-media--utek">
                     <a href="https://utek.skule.ca/about.html" class="experience-media__about" target="_blank" rel="noopener noreferrer">UTEK — utek.skule.ca/about</a>
                     <div class="experience-media__grid">
@@ -221,7 +224,7 @@
             <section class="term-section-start projects-section projects-section--solo" id="projects">
               <header class="projects-header">
                 <h2 class="term-h2 term-h2-projects">Things I’ve built</h2>
-                <p class="projects-lede">FPGA and SoC builds, plus apps and tools — mostly things I actually enjoyed debugging.</p>
+                <p class="projects-lede">Course hardware (<strong>ECE241</strong> Pacman, <strong>ECE243</strong> TRON), a capstone GIS router, hackathon builds, and a few “run it locally” Python experiments — each page has screenshots, stack notes, and what broke along the way.</p>
               </header>
               <div class="term-output-section term-output-projects term-output-projects-bare">
                 <div class="project-category" id="hardware-projects">
@@ -232,10 +235,10 @@
                         <img src="images/pacman-fpga/hardware-arch.png" alt="Pacman FPGA hardware diagram preview" width="400" height="225" loading="lazy" decoding="async" />
                       </div>
                       <div class="project-card-body">
-                        <strong class="project-card-title">Pacman on FPGA</strong>
-                        <p class="project-card-desc">Classic game on <strong>VGA</strong> — <strong>Verilog</strong>, <strong>PS/2</strong> keyboard, the works. Messy but it worked.</p>
+                        <strong class="project-card-title">ECE241 — Pacman on FPGA</strong>
+                        <p class="project-card-desc"><strong>ECE241</strong> final: full <strong>Pac-Man</strong> in <strong>Verilog</strong> on <strong>Cyclone IV</strong> — <strong>VGA</strong> framebuffer, <strong>FSM</strong> movement + wall collisions, <strong>PS/2</strong> controls, and <strong>I2S</strong> audio. No CPU running the game loop — it’s all parallel hardware modules.</p>
                         <span class="project-card-link-hint">Notes</span>
-                        <p class="project-card-meta">Verilog · Cyclone IV</p>
+                        <p class="project-card-meta">Verilog · VGA · PS/2 · I2S · Cyclone IV</p>
                       </div>
                     </a>
                     <a href="project-ece243-tron.html" class="project-card">
@@ -251,9 +254,9 @@
                       </div>
                       <div class="project-card-body">
                         <strong class="project-card-title">ECE243 — TRON</strong>
-                        <p class="project-card-desc"><strong>DE1-SoC</strong> Light Cycle — <strong>VGA</strong>, dual <strong>PS/2</strong>, README-style write-up, <strong>YouTube</strong> demo, and full <strong>PDF</strong> on the page.</p>
+                        <p class="project-card-desc"><strong>DE1-SoC</strong> <strong>Light Cycle</strong> in <strong>C</strong> — two players on <strong>PS/2</strong> keyboards, <strong>VGA</strong> draw loop, trails and collision logic on the <strong>ARM</strong> side with a polished in-browser <strong>README</strong>, <strong>YouTube</strong> demo, and the full <strong>project report PDF</strong>.</p>
                         <span class="project-card-link-hint">Notes</span>
-                        <p class="project-card-meta">C · DE1-SoC · VGA</p>
+                        <p class="project-card-meta">C · DE1-SoC · VGA · dual PS/2</p>
                       </div>
                     </a>
                   </div>
@@ -267,9 +270,9 @@
                       </div>
                       <div class="project-card-body">
                         <strong class="project-card-title">GISelle</strong>
-                        <p class="project-card-desc">City maps with <strong>safer routing</strong> and a bunch of <strong>UI modes</strong> — my <strong>ECE297 capstone</strong>.</p>
+                        <p class="project-card-desc"><strong>ECE297</strong> capstone: <strong>C++</strong> + <strong>EZGL</strong> city map UI with <strong>multi-criteria routing</strong> (time, safety, construction), turn-by-turn directions, POI search, and alternate path previews — <strong>Dijkstra / A*</strong> on real <strong>OpenStreetMap</strong> extracts.</p>
                         <span class="project-card-link-hint">Notes</span>
-                        <p class="project-card-meta">C++ · EZGL · pathfinding</p>
+                        <p class="project-card-meta">C++ · EZGL · Dijkstra · A* · OSM</p>
                       </div>
                     </a>
                     <a href="project-gestureink.html" class="project-card">
@@ -278,9 +281,9 @@
                       </div>
                       <div class="project-card-body">
                         <strong class="project-card-title">Gesture Ink</strong>
-                        <p class="project-card-desc">Drawing in the air with a <strong>webcam</strong> and a noisy <strong>MQTT glove</strong>. Built at <strong>MakeUofT</strong>.</p>
+                        <p class="project-card-desc"><strong>MakeUofT</strong> build: <strong>OpenCV</strong> hand tracking from a <strong>webcam</strong> fused with an <strong>Arduino</strong> flex glove over <strong>MQTT</strong> so gestures map to digital ink, UI controls, and calibration flows — lots of tuning on noisy sensors.</p>
                         <span class="project-card-link-hint">Notes</span>
-                        <p class="project-card-meta">Python · OpenCV · Arduino</p>
+                        <p class="project-card-meta">Python · OpenCV · MQTT · Arduino</p>
                       </div>
                     </a>
                     <a href="project-restaurant-local-qa.html" class="project-card">
@@ -296,9 +299,9 @@
                       </div>
                       <div class="project-card-body">
                         <strong class="project-card-title">Local restaurant Q&amp;A</strong>
-                        <p class="project-card-desc">Plain-English questions over <strong>your</strong> review CSV — <strong>Chroma</strong> + <strong>Ollama</strong>, <strong>no cloud APIs</strong>.</p>
+                        <p class="project-card-desc">A tiny <strong>RAG</strong> CLI: ingest <strong>your</strong> scraped review CSV into <strong>Chroma</strong>, embed + retrieve locally, then answer natural questions (“vegan-friendly dinner under $30?”) with <strong>Ollama</strong> — <strong>no paid cloud LLM APIs</strong>, so it runs offline once models are pulled.</p>
                         <span class="project-card-link-hint">Notes</span>
-                        <p class="project-card-meta">Python · Chroma · LangChain</p>
+                        <p class="project-card-meta">Python · Chroma · LangChain · Ollama</p>
                       </div>
                     </a>
                     <a href="project-scamshield.html" class="project-card">
@@ -307,9 +310,9 @@
                       </div>
                       <div class="project-card-body">
                         <strong class="project-card-title">ScamShield</strong>
-                        <p class="project-card-desc"><strong>Hackathon</strong> fraud-call demo — <strong>Next.js</strong> frontend, <strong>IBM stack</strong> in the back.</p>
+                        <p class="project-card-desc"><strong>GenAI Genesis</strong> / TD fraud track: <strong>Next.js</strong> app that explains scam risk in plain language with an <strong>IBM Cloud</strong> + <strong>Watson</strong>-style pipeline — <strong>“Best Use of Cloud Services”</strong>; live demo + YouTube walkthrough on the project page.</p>
                         <span class="project-card-link-hint">Notes</span>
-                        <p class="project-card-meta">Next.js · TypeScript</p>
+                        <p class="project-card-meta">Next.js · TypeScript · IBM Cloud</p>
                       </div>
                     </a>
                   </div>

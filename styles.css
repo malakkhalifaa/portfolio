@@ -94,8 +94,17 @@ body {
   overflow-x: hidden;
 }
 body:has(> .vscode-layout) {
-  background: var(--term-bg);
-  background-image: none;
+  background-color: var(--term-bg);
+  background-image:
+    radial-gradient(ellipse 110% 75% at 50% -22%, var(--term-glow), transparent 58%),
+    radial-gradient(ellipse 42% 55% at 0% 55%, rgba(86, 156, 214, 0.055), transparent 52%),
+    radial-gradient(ellipse 38% 48% at 100% 88%, rgba(197, 134, 192, 0.045), transparent 50%);
+}
+[data-theme="light"] body:has(> .vscode-layout) {
+  background-image:
+    radial-gradient(ellipse 110% 75% at 50% -22%, var(--term-glow), transparent 58%),
+    radial-gradient(ellipse 42% 55% at 0% 55%, rgba(0, 106, 177, 0.06), transparent 52%),
+    radial-gradient(ellipse 38% 48% at 100% 88%, rgba(120, 90, 200, 0.04), transparent 50%);
 }
 /* Project detail pages: terminal is direct child of body (no .vscode-main), so center it */
 body:has(> .terminal-window) {
@@ -118,6 +127,7 @@ body:has(> .terminal-window) {
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease, width 0.2s ease;
+  position: relative;
 }
 .vscode-sidebar.collapsed { width: 0; min-width: 0; overflow: hidden; border-right-width: 0; }
 .vscode-sidebar-header {
@@ -194,7 +204,15 @@ body:has(> .terminal-window) {
   align-items: stretch;
   padding: 0;
   overflow-x: hidden;
-  background: var(--term-bg);
+  background-color: var(--term-bg);
+  background-image:
+    radial-gradient(ellipse 72% 50% at 78% 8%, rgba(86, 156, 214, 0.055), transparent 52%),
+    radial-gradient(ellipse 55% 42% at 12% 92%, rgba(78, 201, 176, 0.045), transparent 48%);
+}
+[data-theme="light"] .vscode-main {
+  background-image:
+    radial-gradient(ellipse 72% 50% at 78% 8%, rgba(0, 106, 177, 0.05), transparent 52%),
+    radial-gradient(ellipse 55% 42% at 12% 92%, rgba(9, 134, 88, 0.04), transparent 48%);
 }
 
 /* Sidebar — VS Code Explorer panel */
