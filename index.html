@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <canvas id="webgl-overlay" class="webgl-overlay" width="300" height="150" aria-hidden="true"></canvas>
   <div class="vscode-layout">
     <button type="button" class="vscode-scrim" id="vscode-scrim" aria-label="Close explorer" tabindex="-1"></button>
     <aside class="vscode-sidebar vscode-sidebar-cozy" aria-label="Explorer">
@@ -75,26 +76,16 @@
         </nav>
         <main class="term-body">
           <div class="term-content term-content--projects-only">
-            <section class="term-section-start experience-section experience-section--showcase" id="experience" aria-labelledby="experience-heading">
-              <header class="experience-header">
-                <p class="experience-kicker" aria-hidden="true">Work</p>
-                <h2 class="term-h2 term-h2-experience" id="experience-heading">Experience</h2>
+            <section class="term-section-start experience-section projects-section--solo" id="experience" aria-labelledby="experience-heading">
+              <header class="projects-header">
+                <h2 class="term-h2 term-h2-projects" id="experience-heading">Experience</h2>
+                <p class="projects-lede">Hands-on roles — ML, research, and campus competitions — with photos and outbound links where I have them.</p>
               </header>
-              <div class="experience-stack">
+              <div class="term-output-section term-output-projects term-output-projects-bare">
+                <div class="experience-stack">
                 <article class="experience-card">
-                  <div class="experience-card__top">
-                    <div class="experience-card__titles">
-                      <h3 class="experience-card__role">Machine Learning Engineer</h3>
-                      <p class="experience-card__org">NeuroTech UofT</p>
-                    </div>
-                    <div class="experience-card__meta">
-                      <span class="experience-card__dates">September 2025–Present</span>
-                      <span class="experience-card__location">Toronto, ON</span>
-                    </div>
-                  </div>
-                  <p class="experience-card__gist">End-to-end <strong>wearables ML</strong> for <strong>Parkinson’s tremor</strong>: IMU features → <strong>Random Forest</strong> baseline, aimed at <strong>real-time mitigation</strong> on hardware.</p>
-                  <div class="experience-media experience-media--neurotech">
-                    <a href="https://github.com/neurotechuoft/NeuronMove_2024-25" class="experience-media__about" target="_blank" rel="noopener noreferrer">GitHub: neurotechuoft/NeuronMove_2024-25</a>
+                  <div class="experience-card__hero">
+                    <a href="https://github.com/neurotechuoft/NeuronMove_2024-25" class="experience-media__about experience-media__about--in-hero" target="_blank" rel="noopener noreferrer">GitHub: neurotechuoft/NeuronMove_2024-25</a>
                     <div class="experience-media__grid">
                       <figure class="experience-media__fig experience-media__fig--span-full">
                         <img
@@ -131,28 +122,27 @@
                       </figure>
                     </div>
                   </div>
+                  <div class="experience-card-body">
+                    <h3 class="experience-card__role">Machine Learning Engineer</h3>
+                    <p class="experience-card__org">NeuroTech UofT</p>
+                    <p class="experience-card__gist">End-to-end <strong>wearables ML</strong> for <strong>Parkinson’s tremor</strong>: IMU features → <strong>Random Forest</strong> baseline, aimed at <strong>real-time mitigation</strong> on hardware.</p>
                   <ul class="experience-bullets">
                     <li>Built an <strong>ML pipeline</strong> for <strong>Parkinson’s tremor</strong> prediction from <strong>smartwatch IMU data (PADS)</strong>, supporting <strong>real-time tremor mitigation</strong> for PD patients.</li>
                     <li>Designed and implemented <strong>time- and frequency-domain feature engineering</strong> over <strong>132 channels</strong> and <strong>976 timepoints</strong>, producing a <strong>3k+ dimensional feature set</strong> to feed downstream classification for <strong>tremor detection</strong>.</li>
                     <li>Trained and evaluated a <strong>Random Forest</strong> classifier (<strong>100 trees</strong>) for <strong>3-class</strong> (Healthy / Parkinson’s / Other movement disorders), using <strong>5-fold cross-validation</strong> and reporting <strong>accuracy, precision, and recall</strong> to establish a baseline for tremor-prediction systems.</li>
                     <li>Developed data loading, validation, and training scripts in <strong>Python</strong> with <strong>pandas</strong>, <strong>NumPy</strong>, and <strong>scikit-learn</strong>, enabling reproducible model iteration toward <strong>hardware-ready</strong> tremor prediction.</li>
                   </ul>
+                    <p class="experience-card__footnote"><span>September 2025–Present</span> · <span>Toronto, ON</span></p>
+                  </div>
                 </article>
                 <article class="experience-card">
-                  <div class="experience-card__top">
-                    <div class="experience-card__titles">
-                      <h3 class="experience-card__role">Machine Learning Researcher</h3>
-                      <p class="experience-card__org">UC Berkeley &amp; Algoverse AI Research Program</p>
-                    </div>
-                    <div class="experience-card__meta">
-                      <span class="experience-card__dates">September 2025–Present</span>
-                      <span class="experience-card__location">Palo Alto, California, USA · Remote</span>
-                    </div>
+                  <div class="experience-card__hero experience-card__hero--link">
+                    <a href="https://algoverseairesearch.org/about" class="experience-media__about experience-media__about--block" target="_blank" rel="noopener noreferrer">Algoverse AI Research — about the program</a>
                   </div>
-                  <p class="experience-card__gist"><strong>Neural ODEs</strong> on longitudinal eye data — <strong>OLIVES</strong> scale, <strong>counterfactual</strong> drug simulations, manuscript in prep toward <strong>NeurIPS</strong>.</p>
-                  <div class="experience-media experience-media--link-only">
-                    <a href="https://algoverseairesearch.org/about" class="experience-media__about" target="_blank" rel="noopener noreferrer">Algoverse AI Research — about the program</a>
-                  </div>
+                  <div class="experience-card-body">
+                    <h3 class="experience-card__role">Machine Learning Researcher</h3>
+                    <p class="experience-card__org">UC Berkeley &amp; Algoverse AI Research Program</p>
+                    <p class="experience-card__gist"><strong>Neural ODEs</strong> on longitudinal eye data — <strong>OLIVES</strong> scale, <strong>counterfactual</strong> drug simulations, manuscript in prep toward <strong>NeurIPS</strong>.</p>
                   <ul class="experience-bullets">
                     <li><strong>Lead Author</strong> on <strong>“Forecasting Drug Response from Ophthalmic Biomarkers with Neural ODEs”</strong> (manuscript in preparation for <strong>NeurIPS</strong>).</li>
                     <li>Designed a <strong>trajectory-marginalized Neural ODE</strong> framework combining a <strong>VAE</strong> encoder, <strong>GRU</strong> latent initialization, and <strong>continuous-time ODE dynamics</strong> to forecast <strong>longitudinal biomarkers</strong>.</li>
@@ -160,21 +150,12 @@
                     <li>Conducted experiments on the <strong>OLIVES</strong> dataset (<strong>~82k biomarker records</strong>), benchmarking against <strong>LSTMs</strong>, <strong>Transformers</strong>, and <strong>Random Forests</strong>; evaluated using <strong>MSE</strong>, <strong>MAE</strong>, <strong>C-index</strong>, and <strong>causal consistency</strong> metrics.</li>
                     <li>Performed <strong>causal intervention</strong> simulations and <strong>counterfactual forecasting</strong>, demonstrating <strong>biomarker-specific monotonicity</strong>, <strong>dose–response</strong> correlations, and <strong>biologically interpretable causal pathways</strong>.</li>
                   </ul>
+                    <p class="experience-card__footnote"><span>September 2025–Present</span> · <span>Palo Alto, CA · Remote</span></p>
+                  </div>
                 </article>
                 <article class="experience-card">
-                  <div class="experience-card__top">
-                    <div class="experience-card__titles">
-                      <h3 class="experience-card__role">Webmaster &amp; Programming Director</h3>
-                      <p class="experience-card__org">University of Toronto Engineering Kompetitions</p>
-                    </div>
-                    <div class="experience-card__meta">
-                      <span class="experience-card__dates">August 2024–Present</span>
-                      <span class="experience-card__location">Toronto, ON</span>
-                    </div>
-                  </div>
-                  <p class="experience-card__gist"><strong>UTEK</strong> programming track: full <strong>competition package</strong>, rubrics, and logistics — plus the <strong>public site</strong> for <strong>2k+</strong> competitors / year.</p>
-                  <div class="experience-media experience-media--utek">
-                    <a href="https://utek.skule.ca/about.html" class="experience-media__about" target="_blank" rel="noopener noreferrer">UTEK — utek.skule.ca/about</a>
+                  <div class="experience-card__hero">
+                    <a href="https://utek.skule.ca/about.html" class="experience-media__about experience-media__about--in-hero" target="_blank" rel="noopener noreferrer">UTEK — utek.skule.ca/about</a>
                     <div class="experience-media__grid">
                       <figure class="experience-media__fig experience-media__fig--span-full">
                         <img
@@ -211,6 +192,10 @@
                       </figure>
                     </div>
                   </div>
+                  <div class="experience-card-body">
+                    <h3 class="experience-card__role">Webmaster &amp; Programming Director</h3>
+                    <p class="experience-card__org">University of Toronto Engineering Kompetitions</p>
+                    <p class="experience-card__gist"><strong>UTEK</strong> programming track: full <strong>competition package</strong>, rubrics, and logistics — plus the <strong>public site</strong> for <strong>2k+</strong> competitors / year.</p>
                   <ul class="experience-bullets">
                     <li>Designed and authored the full <strong>UTEK 2026 Programming Competition Package</strong> focused on <strong>Sustainable Medical Logistics</strong>.</li>
                     <li>Created a dual-focus challenge on <strong>hospital supply optimization</strong> and <strong>emergency response routing</strong> with <strong>multi-agent coordination</strong> and <strong>dynamic rerouting</strong>.</li>
@@ -218,7 +203,10 @@
                     <li>Developed a <strong>100-point rubric</strong> evaluating <strong>algorithms</strong>, <strong>adaptability</strong>, <strong>usability</strong>, and <strong>code quality</strong>.</li>
                     <li>Revamped and maintained the UTEK website using <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, and <strong>Plesk</strong>, supporting <strong>2,000+</strong> annual users and increasing <strong>2024</strong> registrations by <strong>236%</strong> through UX improvements.</li>
                   </ul>
+                    <p class="experience-card__footnote"><span>August 2024–Present</span> · <span>Toronto, ON</span></p>
+                  </div>
                 </article>
+                </div>
               </div>
             </section>
             <section class="term-section-start projects-section projects-section--solo" id="projects">
@@ -310,7 +298,7 @@
                       </div>
                       <div class="project-card-body">
                         <strong class="project-card-title">ScamShield</strong>
-                        <p class="project-card-desc"><strong>GenAI Genesis</strong> / TD fraud track: <strong>Next.js</strong> app that explains scam risk in plain language with an <strong>IBM Cloud</strong> + <strong>Watson</strong>-style pipeline — <strong>“Best Use of Cloud Services”</strong>; live demo + YouTube walkthrough on the project page.</p>
+                        <p class="project-card-desc"><strong>GenAI Genesis</strong> / TD fraud track: <strong>Next.js</strong> app that explains scam risk in plain language, wired to <strong>IBM Cloud</strong> + <strong>Watsonx</strong> (Granite) with env-driven fallbacks — <strong>IBM Best Use of Cloud Services</strong>; live demo + YouTube on the project page.</p>
                         <span class="project-card-link-hint">Notes</span>
                         <p class="project-card-meta">Next.js · TypeScript · IBM Cloud</p>
                       </div>
@@ -340,6 +328,7 @@
     </div>
   </div>
   <footer class="term-footer term-footer--cute"><span class="term-footer-prompt" aria-hidden="true"></span><span id="year"></span> · Malak</footer>
-  <script src="script.js"></script>
+  <script src="webgl-bg.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
