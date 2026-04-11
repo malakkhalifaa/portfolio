@@ -8,6 +8,18 @@
   var sidebar = document.querySelector('.vscode-sidebar');
   var sidebarToggle = document.getElementById('sidebar-toggle');
   var explorerToggleMobile = document.getElementById('explorer-toggle-mobile');
+  var scrim = document.getElementById('vscode-scrim');
+
+  function isMobileExplorer() {
+    return window.matchMedia('(max-width: 768px)').matches;
+  }
+
+  function syncExplorerScrim() {
+    if (!scrim || !sidebar) return;
+    var open = sidebar.classList.contains('open') && isMobileExplorer();
+    scrim.classList.toggle('is-visible', open);
+    scrim.setAttribute('aria-hidden', open ? 'false' : 'true');
+  }
 
   function toggleSidebar() {
     if (!sidebar) return;
@@ -15,11 +27,30 @@
     sidebar.classList.toggle('open', !sidebar.classList.contains('collapsed'));
     if (sidebarToggle) sidebarToggle.setAttribute('aria-label', sidebar.classList.contains('collapsed') ? 'Show sidebar' : 'Hide sidebar');
     if (explorerToggleMobile) explorerToggleMobile.setAttribute('aria-label', sidebar.classList.contains('collapsed') ? 'Open Explorer' : 'Close Explorer');
+    syncExplorerScrim();
   }
 
   if (sidebar && sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
   if (sidebar && explorerToggleMobile) explorerToggleMobile.addEventListener('click', toggleSidebar);
   if (sidebar && window.matchMedia('(max-width: 768px)').matches) sidebar.classList.add('collapsed');
+
+  if (scrim && sidebar) {
+    scrim.addEventListener('click', function () {
+      if (!isMobileExplorer()) return;
+      sidebar.classList.add('collapsed');
+      sidebar.classList.remove('open');
+      if (sidebarToggle) sidebarToggle.setAttribute('aria-label', 'Show sidebar');
+      if (explorerToggleMobile) explorerToggleMobile.setAttribute('aria-label', 'Open Explorer');
+      syncExplorerScrim();
+    });
+  }
+
+  window.addEventListener('resize', function () {
+    syncExplorerScrim();
+    if (!isMobileExplorer() && scrim) scrim.classList.remove('is-visible');
+  });
+
+  syncExplorerScrim();
 
   /* Folder expand/collapse in Explorer */
   document.querySelectorAll('.vscode-tree-folder').forEach(function (btn) {

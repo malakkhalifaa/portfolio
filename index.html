@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e1e1e" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <title>Malak — Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="vscode-layout">
+    <button type="button" class="vscode-scrim" id="vscode-scrim" aria-label="Close explorer" tabindex="-1"></button>
     <aside class="vscode-sidebar vscode-sidebar-cozy" aria-label="Explorer">
       <div class="vscode-sidebar-header">
         <span class="explorer-badge" title="Your file tree">
@@ -58,6 +61,18 @@
           <span class="term-title">index.html — portfolio</span>
           <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
         </header>
+        <div class="term-tabs" aria-hidden="true">
+          <span class="term-tab term-tab--active"><span class="term-tab-icon" aria-hidden="true"></span>index.html</span>
+          <span class="term-tab term-tab--preview">Experience</span>
+          <span class="term-tab term-tab--ghost"><span class="term-tab-icon term-tab-icon--md" aria-hidden="true"></span>README.md</span>
+        </div>
+        <nav class="term-breadcrumb" aria-label="Path" aria-hidden="true">
+          <span class="term-breadcrumb-prompt" aria-hidden="true">~</span>
+          <span class="term-breadcrumb-sep" aria-hidden="true">/</span>
+          <span class="term-breadcrumb-part">portfolio</span>
+          <span class="term-breadcrumb-sep" aria-hidden="true">/</span>
+          <span class="term-breadcrumb-part term-breadcrumb-part--file">index.html</span>
+        </nav>
         <main class="term-body">
           <div class="term-content term-content--projects-only">
             <section class="term-section-start experience-section experience-section--showcase" id="experience" aria-labelledby="experience-heading">
@@ -303,10 +318,25 @@
             </section>
           </div>
         </main>
+        <div class="term-statusbar" role="presentation">
+          <span class="term-statusbar-branch" title="Branch">main</span>
+          <span class="term-statusbar-sep" aria-hidden="true"></span>
+          <span>UTF-8</span>
+          <span class="term-statusbar-sep" aria-hidden="true"></span>
+          <span>LF</span>
+          <span class="term-statusbar-sep" aria-hidden="true"></span>
+          <span class="term-statusbar-metric" title="Cursor">Ln 1, Col 1</span>
+          <span class="term-statusbar-sep" aria-hidden="true"></span>
+          <span class="term-statusbar-metric" title="Errors">✓ 0</span>
+          <span class="term-statusbar-sep" aria-hidden="true"></span>
+          <span class="term-statusbar-metric" title="Warnings">⚠ 0</span>
+          <span class="term-statusbar-sep" aria-hidden="true"></span>
+          <span class="term-statusbar-right">portfolio</span>
+        </div>
       </div>
     </div>
   </div>
-  <footer class="term-footer"><span id="year"></span> · Malak</footer>
+  <footer class="term-footer term-footer--cute"><span class="term-footer-prompt" aria-hidden="true"></span><span id="year"></span> · Malak</footer>
   <script src="script.js"></script>
 </body>
 </html>
