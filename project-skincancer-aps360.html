@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skin cancer detection (APS360) — Malak</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="terminal-window">
+    <header class="term-titlebar">
+      <div class="term-dots">
+        <span class="dot close"></span>
+        <span class="dot min"></span>
+        <span class="dot max"></span>
+      </div>
+      <span class="term-title">project: skincancer-aps360 — Malak</span>
+      <a href="index.html#projects" class="back-link term-back">← index</a>
+      <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
+    </header>
+
+    <main class="term-body">
+      <div class="term-content">
+        <div class="term-line">
+          <span class="prompt">malak@portfolio:~/projects$</span>
+          <span class="cmd">cat skincancer-aps360/README.md</span>
+        </div>
+        <article class="project-detail project-detail-long">
+          <h1>Skin cancer detection (APS360)</h1>
+          <p class="project-meta">APS360 · Python · PyTorch · VGG16 · HAM10000 · Google Colab</p>
+
+          <div class="project-body">
+            <p>
+              <strong>7-class</strong> skin lesion classification on the <strong>HAM10000</strong> dataset: reproducible preprocessing, stratified train/val/test splits, augmentation, a <strong>Random Forest</strong> baseline, and a <strong>VGG16</strong> transfer-learning model with a custom classifier head — compared on in-distribution test data and an external <strong>ISIC</strong> set.
+            </p>
+            <p>
+              Target classes: <strong>akiec, bcc, bkl, df, mel, nv, vasc</strong>. The CNN pipeline uses <strong>ImageNet</strong>-initialized VGG16 with frozen conv blocks and trains only the new head plus fine-tuning strategy as described below.
+            </p>
+
+            <h2>Project overview</h2>
+            <p>
+              Automated dermoscopic classification can support triage and education, but is not a substitute for clinical diagnosis. This project implements a full <strong>CNN</strong> workflow with <strong>imbalance-aware</strong> training and compares against a classical baseline.
+            </p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded>
+                <img
+                  src="https://github.com/user-attachments/assets/d9ad09a7-77a2-4d22-9c0b-d0c15d763226"
+                  alt="Overview of the skin lesion classification pipeline"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="675"
+                />
+              </span>
+              <figcaption class="img-caption">High-level pipeline overview.</figcaption>
+            </figure>
+
+            <h2>Dataset</h2>
+            <ul>
+              <li><strong>Source:</strong> HAM10000 (Kaggle / ISIC 2018)</li>
+              <li><strong>Images:</strong> 10,015 dermoscopic images</li>
+              <li><strong>Split:</strong> 70% train (7,010) · 15% validation (1,502) · 15% test (1,503), stratified</li>
+            </ul>
+            <p>
+              Class distribution is highly imbalanced: <strong>nv</strong> dominates (~67%), while <strong>vasc</strong> (~1.4%) and <strong>df</strong> (~1.1%) are rare. Oversampling of minority classes was used to reduce bias during training.
+            </p>
+            <div class="project-figure-split" role="group" aria-label="Class distribution charts">
+              <figure class="project-figure project-figure--split">
+                <span class="project-img-wrap" data-img-loaded>
+                  <img
+                    src="https://github.com/user-attachments/assets/30f1aff2-e556-4da4-ab23-8f44095cd14a"
+                    alt="HAM10000 class distribution chart"
+                    class="project-img"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="600"
+                  />
+                </span>
+                <figcaption class="img-caption">Class frequencies.</figcaption>
+              </figure>
+              <figure class="project-figure project-figure--split">
+                <span class="project-img-wrap" data-img-loaded>
+                  <img
+                    src="https://github.com/user-attachments/assets/6f9eedaf-6b98-459d-8984-8312b3eae71c"
+                    alt="Additional dataset visualization"
+                    class="project-img"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="600"
+                  />
+                </span>
+                <figcaption class="img-caption">Dataset summary.</figcaption>
+              </figure>
+            </div>
+
+            <h2>Preprocessing</h2>
+            <ul>
+              <li>Resize / crop to <strong>224×224</strong></li>
+              <li>Normalize with <strong>ImageNet</strong> mean and standard deviation</li>
+              <li><strong>Augmentation:</strong> random horizontal/vertical flips, rotations, color jitter, random greyscale</li>
+              <li><strong>Oversampling</strong> of minority classes</li>
+            </ul>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded>
+                <img
+                  src="https://github.com/user-attachments/assets/97302d83-b3cf-4a31-a274-334ac0c02c3b"
+                  alt="Data augmentation and preprocessing illustration"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="675"
+                />
+              </span>
+              <figcaption class="img-caption">Preprocessing &amp; augmentation.</figcaption>
+            </figure>
+
+            <h2>Model architecture</h2>
+            <ul>
+              <li><strong>Backbone:</strong> VGG16 with ImageNet weights; convolutional layers <strong>frozen</strong></li>
+              <li><strong>Classifier head:</strong> Dense(1024)+BN+ReLU+Dropout(0.3) → Dense(512)+BN+ReLU+Dropout(0.2) → Dense(128)+BN+ReLU+Dropout(0.2) → Dense(7, softmax)</li>
+              <li><strong>Trainable parameters:</strong> ~26.3M</li>
+            </ul>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded>
+                <img
+                  src="https://github.com/user-attachments/assets/61215261-f047-4064-8b99-44183b177978"
+                  alt="VGG16 model architecture diagram with custom head"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="675"
+                />
+              </span>
+              <figcaption class="img-caption">Architecture schematic.</figcaption>
+            </figure>
+
+            <h2>Baseline model (Random Forest)</h2>
+            <ul>
+              <li><strong>Validation accuracy:</strong> 72.2%</li>
+              <li><strong>Test accuracy:</strong> 71.5%</li>
+              <li><strong>F1:</strong> strong on majority class <strong>nv</strong> (~0.85), but <strong>0.00</strong> on rare classes <strong>df</strong> and <strong>vasc</strong></li>
+            </ul>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded>
+                <img
+                  src="https://github.com/user-attachments/assets/d3478b89-3464-49a1-9063-8cecc09407a6"
+                  alt="Random Forest baseline results"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="675"
+                />
+              </span>
+              <figcaption class="img-caption">Baseline performance summary.</figcaption>
+            </figure>
+
+            <h2>Training (VGG16)</h2>
+            <p><strong>Environment:</strong> Google Colab (GPU).</p>
+            <ul>
+              <li><strong>Validation accuracy:</strong> 74.5%</li>
+              <li><strong>Test accuracy:</strong> 74.7%</li>
+              <li><strong>Macro F1:</strong> 0.60 (vs. 0.30 baseline)</li>
+              <li><strong>Weighted F1:</strong> 0.76 (vs. 0.66 baseline)</li>
+            </ul>
+
+            <h2>Evaluation metrics</h2>
+            <p>
+              <strong>Test accuracy</strong> 74.7% · <strong>error rate</strong> 25.3%. Per-class F1 highlights: <strong>akiec</strong> 0.53, <strong>df</strong> 0.47 (baseline 0.00), <strong>vasc</strong> 0.62 (baseline 0.00), <strong>nv</strong> 0.86.
+            </p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded>
+                <img
+                  src="https://github.com/user-attachments/assets/a463269e-f245-461b-962f-3e7dcfb71ff7"
+                  alt="Classification report and metrics for primary model"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="675"
+                />
+              </span>
+              <figcaption class="img-caption">Test classification report (primary model).</figcaption>
+            </figure>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded>
+                <img
+                  src="https://github.com/user-attachments/assets/f99bcd5f-79ad-460d-9a95-6863063a9270"
+                  alt="Metric comparison vs baseline"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="675"
+                />
+              </span>
+              <figcaption class="img-caption">Improvements vs. baseline across classes.</figcaption>
+            </figure>
+
+            <h2>Qualitative results</h2>
+            <p>
+              <strong>Baseline confusion matrix:</strong> very strong on <strong>nv</strong> (e.g. 965 correct), no correct predictions for <strong>df</strong> and <strong>vasc</strong>. <strong>Primary model:</strong> better minority-class predictions while retaining strong <strong>nv</strong> performance (~830 correct, ~82% hit rate on that class in the reported matrix).
+            </p>
+            <div class="project-figure-split" role="group" aria-label="Confusion matrices baseline and primary">
+              <figure class="project-figure project-figure--split">
+                <span class="project-img-wrap" data-img-loaded>
+                  <img
+                    src="https://github.com/user-attachments/assets/d9899736-9730-4dee-b941-d298700d6401"
+                    alt="Baseline Random Forest confusion matrix"
+                    class="project-img"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="800"
+                  />
+                </span>
+                <figcaption class="img-caption">Baseline confusion matrix.</figcaption>
+              </figure>
+              <figure class="project-figure project-figure--split">
+                <span class="project-img-wrap" data-img-loaded>
+                  <img
+                    src="https://github.com/user-attachments/assets/ff0463eb-64de-4f50-ac9f-7f3003474c52"
+                    alt="Primary VGG16 model confusion matrix"
+                    class="project-img"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="800"
+                  />
+                </span>
+                <figcaption class="img-caption">Primary model confusion matrix.</figcaption>
+              </figure>
+            </div>
+
+            <h2>External evaluation</h2>
+            <p>
+              <strong>ISIC 2018</strong> external test set (1,511 images): <strong>accuracy 67.3%</strong> (~7 points below in-distribution test). Minority-class gains vs. baseline largely held: e.g. class 3 F1 0.39 vs. 0.00, class 6 F1 0.51 vs. 0.00.
+            </p>
+            <figure class="project-figure">
+              <span class="project-img-wrap" data-img-loaded>
+                <img
+                  src="https://github.com/user-attachments/assets/c259453c-0e8f-4c90-95ef-250392bc35c0"
+                  alt="External evaluation on ISIC test set"
+                  class="project-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="675"
+                />
+              </span>
+              <figcaption class="img-caption">External (ISIC) evaluation.</figcaption>
+            </figure>
+
+            <h2>Ethical considerations</h2>
+            <ul>
+              <li>Dataset <strong>underrepresents darker skin tones</strong> — risk of biased predictions across demographics.</li>
+              <li><strong>Oversampling</strong> mitigates class imbalance but does not fix representation gaps.</li>
+              <li>Consent and privacy constraints apply to dermoscopic archives.</li>
+              <li>This is a <strong>research / coursework prototype</strong>, not a clinical device; it must not replace professional diagnosis.</li>
+            </ul>
+          </div>
+
+          <div class="project-links">
+            <a href="index.html#projects" class="btn-link">← Back to projects</a>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <footer class="term-footer">
+    <span id="year"></span> · <a href="index.html">Malak</a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
