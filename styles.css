@@ -896,6 +896,119 @@ body:has(> .terminal-window) .term-body {
 .about-section .about-panel__aside .about-panel__gilmore {
   margin: 0;
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--term-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+[data-theme="light"] .about-section .about-panel__aside .about-panel__gilmore {
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+.about-section .about-panel__gilmore-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.75rem 0.55rem;
+  border-bottom: 1px solid var(--term-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+[data-theme="light"] .about-section .about-panel__gilmore-head {
+  background: rgba(255, 255, 255, 0.45);
+}
+.about-section .about-panel__gilmore-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-sm);
+  background: rgba(197, 134, 192, 0.2);
+  color: #c586c0;
+}
+[data-theme="light"] .about-section .about-panel__gilmore-mark {
+  background: rgba(197, 134, 192, 0.15);
+  color: #80589c;
+}
+.about-section .about-panel__gilmore-head-text {
+  min-width: 0;
+  flex: 1;
+}
+.about-section .about-panel__gilmore-kicker {
+  margin: 0.12rem 0 0;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--term-muted);
+  line-height: 1.3;
+}
+.about-section .about-panel__gilmore-body {
+  padding: 0.65rem 0.75rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.about-section .about-panel__gilmore-intro {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--term-muted);
+}
+.about-section .about-panel__gilmore-intro cite {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--term-text);
+}
+.about-section .about-panel__gilmore-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--term-border);
+  background: rgba(255, 255, 255, 0.04);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+[data-theme="light"] .about-section .about-panel__gilmore-card {
+  background: rgba(255, 255, 255, 0.55);
+}
+.about-section .about-panel__gilmore-card:hover {
+  background: var(--vscode-list-hover);
+  border-color: rgba(197, 134, 192, 0.45);
+}
+.about-section .about-panel__gilmore-card:focus-visible {
+  outline: 2px solid var(--vscode-focus-border);
+  outline-offset: 1px;
+}
+.about-section .about-panel__gilmore-card-title {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--term-link);
+}
+.about-section .about-panel__gilmore-card:hover .about-panel__gilmore-card-title {
+  color: var(--term-link-hover);
+}
+.about-section .about-panel__gilmore-card-title cite {
+  font-style: italic;
+  font-weight: 600;
+  color: inherit;
+}
+.about-section .about-panel__gilmore-card-meta {
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  color: var(--term-muted);
+}
+.about-section .about-panel__gilmore-card-meta em {
+  font-style: normal;
+  font-weight: 600;
 }
 .about-section .about-panel__main .about-panel__intro {
   padding-bottom: 0.65rem;
@@ -939,40 +1052,13 @@ body:has(> .terminal-window) .term-body {
   font-family: var(--font);
   font-size: 11px;
 }
-.about-panel__gilmore {
-  margin: 0.85rem 0 0;
-  padding: 0.7rem 0.85rem 0.8rem;
-  border: 1px solid var(--term-border);
-  border-left-width: 3px;
-  border-left-color: var(--term-prompt);
-  border-radius: var(--radius-sm);
-  background: rgba(78, 201, 176, 0.07);
-}
-[data-theme="light"] .about-panel__gilmore {
-  background: rgba(9, 134, 88, 0.07);
-}
 .about-panel__gilmore-title {
-  margin: 0 0 0.4rem;
+  margin: 0;
   font-family: var(--font);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--term-text);
-  line-height: 1.25;
-}
-.about-panel__prose--gilmore {
-  margin: 0 !important;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--term-text);
-}
-.about-panel__prose--gilmore cite {
-  font-style: italic;
+  font-size: 12px;
   font-weight: 600;
   color: var(--term-text);
-}
-.about-panel__text-link--gilmore {
-  font-weight: 500;
+  line-height: 1.25;
 }
 
 .about-panel__github-chart-wrap {
