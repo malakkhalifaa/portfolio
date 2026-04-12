@@ -118,4 +118,53 @@
     }
   });
 
+  /* Index only: low-opacity monospace typing wash (fixed stacking; no pointer / layout impact) */
+  var typingRoot = document.querySelector('.code-typing-backdrop');
+  if (typingRoot) {
+    var typingPre = typingRoot.querySelector('.code-typing-pre');
+    if (typingPre) {
+      var typingSource =
+        '// ~/portfolio — scratchpad\n' +
+        'const stack = ["PyTorch", "Verilog", "C++", "TypeScript"];\n' +
+        'async function route(map, opts) {\n' +
+        '  const g = buildGraph(map, { osm: true });\n' +
+        '  return astar(g, opts.from, opts.to, opts.heuristic);\n' +
+        '}\n' +
+        'model.fit(X_train, y_train); // NeuroTech · IMU tremor\n' +
+        'for (let epoch = 0; epoch < EPOCHS; epoch++) {\n' +
+        '  loss.backward();\n' +
+        '  optim.step();\n' +
+        '}\n' +
+        '# RISC-V\n' +
+        '  lw   t0, 0(a0)\n' +
+        '  addi t1, t0, 4\n' +
+        '  jalr ra, 0(t1)\n' +
+        '$ git commit -m "ECE297: GIS + safety routing"\n' +
+        '$ ollama run llama3 "summarize reviews"\n' +
+        'export PATH="$HOME/.local/bin:$PATH"\n';
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        typingPre.textContent = typingSource;
+      } else {
+        var typingPos = 0;
+        var typingBuf = '';
+        var typingMax = 2600;
+        var typingMs = window.matchMedia('(max-width: 768px)').matches ? 96 : 64;
+        function typingTick() {
+          if (document.hidden) return;
+          var n = 1;
+          if (Math.random() > 0.78) n += 1;
+          if (Math.random() > 0.94) n += 2;
+          for (var i = 0; i < n; i++) {
+            typingBuf += typingSource.charAt(typingPos % typingSource.length);
+            typingPos++;
+          }
+          if (typingBuf.length > typingMax) typingBuf = typingBuf.slice(-typingMax);
+          typingPre.textContent = typingBuf;
+        }
+        window.setInterval(typingTick, typingMs);
+      }
+    }
+  }
+
 })();
