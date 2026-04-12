@@ -714,6 +714,112 @@ body:has(> .terminal-window) .term-body {
 .about-section.projects-section--solo {
   margin-bottom: 0;
 }
+
+/* About — plain layout (no accent bar, no card lift on hover) */
+.about-section .projects-header {
+  padding-left: 0;
+}
+.about-section .projects-header::before {
+  display: none;
+}
+.about-section .projects-header .projects-lede {
+  font-size: 12px;
+  max-width: none;
+}
+.about-section .about-panel {
+  border-radius: var(--radius-md);
+  transition: border-color 0.12s ease, background 0.12s ease;
+  box-shadow: none;
+}
+.about-section .about-panel:hover {
+  transform: none;
+  box-shadow: none;
+  outline-color: transparent;
+  background: var(--term-surface);
+}
+[data-theme="light"] .about-section .about-panel:hover {
+  background: var(--term-surface);
+  box-shadow: none;
+}
+.about-section .about-panel__body {
+  padding: 0.85rem 0.95rem 1rem;
+}
+.about-section .about-panel__block {
+  padding-top: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+.about-section .about-panel__block:first-of-type {
+  padding-top: 0;
+}
+.about-section .about-panel__heading {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12px;
+  color: var(--term-text);
+}
+.about-section .about-panel__meta {
+  border-top: none;
+  padding-top: 0.25rem;
+  margin-top: 0.5rem !important;
+  font-family: var(--font);
+  font-size: 11px;
+}
+.about-panel__gilmore {
+  margin: 0.85rem 0 0;
+  padding: 0.7rem 0.85rem 0.8rem;
+  border: 1px solid var(--term-border);
+  border-left-width: 3px;
+  border-left-color: var(--term-prompt);
+  border-radius: var(--radius-sm);
+  background: rgba(78, 201, 176, 0.07);
+}
+[data-theme="light"] .about-panel__gilmore {
+  background: rgba(9, 134, 88, 0.07);
+}
+.about-panel__gilmore-title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--term-text);
+  line-height: 1.25;
+}
+.about-panel__prose--gilmore {
+  margin: 0 !important;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--term-text);
+}
+.about-panel__prose--gilmore cite {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--term-text);
+}
+.about-panel__text-link--gilmore {
+  font-weight: 500;
+}
+
+.about-panel__github-chart-wrap {
+  display: block;
+  margin-top: 0.45rem;
+  border: 1px solid var(--term-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  line-height: 0;
+  background: var(--term-surface);
+}
+.about-panel__github-chart-wrap:focus-visible {
+  outline: 2px solid var(--vscode-focus-border);
+  outline-offset: 2px;
+}
+.about-panel__github-chart {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
 .about-panel {
   position: relative;
   display: flex;
@@ -755,11 +861,29 @@ body:has(> .terminal-window) .term-body {
   padding: 1rem 1.15rem 1.15rem;
   max-width: min(52rem, 100%);
 }
+.about-panel__intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin: 0 0 1rem;
+}
+.about-panel__photo {
+  flex-shrink: 0;
+  width: 5.25rem;
+  height: 5.25rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid var(--term-border);
+  background: var(--vscode-editor-background, #1e1e1e);
+}
+[data-theme="light"] .about-panel__photo {
+  background: #f3f3f3;
+}
 .about-panel__lead {
   font-size: 13px;
   line-height: 1.55;
   color: var(--term-text);
-  margin: 0 0 1rem;
+  margin: 0;
 }
 .about-panel__prose {
   font-size: 12px;

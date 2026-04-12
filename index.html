@@ -86,9 +86,20 @@
               <div class="term-output-section term-output-projects term-output-projects-bare">
                 <article class="about-panel" aria-label="About Malak">
                   <div class="about-panel__body">
-                    <p class="about-panel__lead">
-                      Hi — I’m <strong>Malak</strong>. Welcome to my portfolio.
-                    </p>
+                    <div class="about-panel__intro">
+                      <img
+                        src="images/github-profile.png"
+                        alt="Malak"
+                        class="about-panel__photo"
+                        width="128"
+                        height="128"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <p class="about-panel__lead">
+                        Hi — I’m <strong>Malak</strong>. Welcome to my portfolio.
+                      </p>
+                    </div>
 
                     <div class="about-panel__block">
                       <h3 class="about-panel__heading">Education</h3>
@@ -115,16 +126,48 @@
                       </ul>
                     </div>
 
-                    <p class="about-panel__prose">
-                      In my free time you’ll find me watching <cite>Gilmore Girls</cite> —
+                    <div class="about-panel__block about-panel__block--github" id="github">
+                      <h3 class="about-panel__heading">GitHub</h3>
+                      <p class="about-panel__prose">
+                        <a
+                          href="https://github.com/malakkhalifaa"
+                          class="about-panel__text-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >github.com/malakkhalifaa</a>
+                      </p>
                       <a
-                        href="https://www.vogue.com/article/22-and-just-watched-gilmore-girls-for-the-first-time"
-                        class="about-panel__text-link"
+                        href="https://github.com/malakkhalifaa"
+                        class="about-panel__github-chart-wrap"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >I’m 22 and I Just Watched <cite>Gilmore Girls</cite> for the First Time. Here Were My Thoughts</a>
-                      (<em>Vogue</em>, 2023).
-                    </p>
+                        aria-label="Open Malak’s GitHub profile (contribution chart)"
+                      >
+                        <img
+                          src="https://ghchart.rshah.org/malakkhalifaa"
+                          alt="Contribution chart: GitHub activity for malakkhalifaa over the past year"
+                          class="about-panel__github-chart"
+                          width="1012"
+                          height="160"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </a>
+                    </div>
+
+                    <div class="about-panel__gilmore">
+                      <p class="about-panel__gilmore-title">Gilmore Girls</p>
+                      <p class="about-panel__prose about-panel__prose--gilmore">
+                        In my free time you’ll find me watching <cite>Gilmore Girls</cite> —
+                        <a
+                          href="https://www.vogue.com/article/22-and-just-watched-gilmore-girls-for-the-first-time"
+                          class="about-panel__text-link about-panel__text-link--gilmore"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >I’m 22 and I Just Watched <cite>Gilmore Girls</cite> for the First Time. Here Were My Thoughts</a>
+                        (<em>Vogue</em>, 2023).
+                      </p>
+                    </div>
 
                     <p class="about-panel__meta">Toronto, ON · portfolio &amp; contact via links in each section</p>
                   </div>
