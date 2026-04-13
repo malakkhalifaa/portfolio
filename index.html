@@ -11,57 +11,10 @@
 <body>
   <canvas id="webgl-overlay" class="webgl-overlay" width="300" height="150" aria-hidden="true"></canvas>
   <div class="vscode-layout">
-    <button type="button" class="vscode-scrim" id="vscode-scrim" aria-label="Close explorer" tabindex="-1"></button>
-    <aside class="vscode-sidebar vscode-sidebar-cozy" aria-label="Explorer">
-      <div class="vscode-sidebar-header">
-        <span class="explorer-badge" title="Your file tree">
-          <span class="explorer-badge-glow" aria-hidden="true"></span>
-          <span class="explorer-badge-text">Explorer</span>
-        </span>
-        <button type="button" class="vscode-sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">≡</button>
-      </div>
-      <nav class="vscode-tree">
-        <div class="vscode-tree-root">
-          <button type="button" class="vscode-tree-folder is-open" aria-expanded="true">
-            <span class="vscode-tree-chevron">▼</span>
-            <span class="vscode-tree-icon vscode-tree-icon-root" aria-hidden="true"></span>
-            <span class="vscode-tree-label">Portfolio</span>
-          </button>
-          <div class="vscode-tree-children">
-            <a href="#about" class="vscode-tree-item" data-section="about"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">About me</span></a>
-            <a href="#contact" class="vscode-tree-item" data-section="contact"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Contact me</span></a>
-            <a href="#experience" class="vscode-tree-item" data-section="experience"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Experience</span></a>
-            <a href="#projects" class="vscode-tree-item" data-section="projects"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Projects</span></a>
-            <button type="button" class="vscode-tree-folder is-open" aria-expanded="true">
-              <span class="vscode-tree-chevron">▼</span>
-              <span class="vscode-tree-icon vscode-tree-icon-root" aria-hidden="true"></span>
-              <span class="vscode-tree-label">Hardware</span>
-            </button>
-            <div class="vscode-tree-children">
-              <a href="project-pacman-fpga.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file vscode-tree-icon-file--fun" aria-hidden="true"></span><span class="vscode-tree-label">ECE241 · Pacman</span></a>
-              <a href="project-ece243-tron.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">ECE243 TRON</span></a>
-            </div>
-            <button type="button" class="vscode-tree-folder is-open" aria-expanded="true">
-              <span class="vscode-tree-chevron">▼</span>
-              <span class="vscode-tree-icon vscode-tree-icon-root" aria-hidden="true"></span>
-              <span class="vscode-tree-label">Software</span>
-            </button>
-            <div class="vscode-tree-children">
-              <a href="project-giselle.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">GISelle</span></a>
-              <a href="project-gestureink.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Gesture Ink</span></a>
-              <a href="project-restaurant-local-qa.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Restaurant Q&amp;A</span></a>
-              <a href="project-scamshield.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">ScamShield</span></a>
-              <a href="project-skincancer-aps360.html" class="vscode-tree-item vscode-tree-item-nested"><span class="vscode-tree-icon vscode-tree-icon-file" aria-hidden="true"></span><span class="vscode-tree-label">Skin cancer · APS360</span></a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </aside>
     <div class="vscode-main">
       <div class="terminal-window" id="terminal-window">
         <header class="term-titlebar">
           <div class="term-dots"><span class="dot close"></span><span class="dot min"></span><span class="dot max"></span></div>
-          <button type="button" class="term-explorer-toggle" id="explorer-toggle-mobile" aria-label="Open Explorer">≡</button>
           <span class="term-title">index.html — portfolio</span>
           <button type="button" class="term-theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="icon-dark">◐</span><span class="icon-light">☀</span></button>
         </header>
@@ -293,9 +246,6 @@
                   </div>
                 </article>
                 <article class="experience-card">
-                  <div class="experience-card__hero experience-card__hero--link">
-                    <a href="https://algoverseairesearch.org/about" class="experience-media__about experience-media__about--block" target="_blank" rel="noopener noreferrer">Algoverse AI Research — about the program</a>
-                  </div>
                   <div class="experience-card-body">
                     <h3 class="experience-card__role">Machine Learning Researcher</h3>
                     <p class="experience-card__org">UC Berkeley &amp; Algoverse AI Research Program</p>
@@ -307,7 +257,7 @@
                     <li>Conducted experiments on the <strong>OLIVES</strong> dataset (<strong>~82k biomarker records</strong>), benchmarking against <strong>LSTMs</strong>, <strong>Transformers</strong>, and <strong>Random Forests</strong>; evaluated using <strong>MSE</strong>, <strong>MAE</strong>, <strong>C-index</strong>, and <strong>causal consistency</strong> metrics.</li>
                     <li>Performed <strong>causal intervention</strong> simulations and <strong>counterfactual forecasting</strong>, demonstrating <strong>biomarker-specific monotonicity</strong>, <strong>dose–response</strong> correlations, and <strong>biologically interpretable causal pathways</strong>.</li>
                   </ul>
-                    <p class="experience-card__footnote"><span>September 2025–Present</span> · <span>Palo Alto, CA · Remote</span></p>
+                    <p class="experience-card__footnote"><span>September 2025–Present</span> · <span>Palo Alto, CA · Remote</span> · <a href="https://algoverseairesearch.org/about" class="experience-footnote-link" target="_blank" rel="noopener noreferrer">Algoverse program</a></p>
                   </div>
                 </article>
                 <article class="experience-card">
