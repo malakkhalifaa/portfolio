@@ -846,24 +846,36 @@ body:has(> .terminal-window) .term-body {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  border: 1px solid color-mix(in srgb, var(--term-border) 92%, transparent);
-  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in srgb, #e8b4d4 35%, var(--term-border) 65%);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  background: var(--term-bg);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, rgba(232, 180, 212, 0.14) 100%, transparent) 0%,
+    var(--term-bg) 52%
+  );
+  box-shadow: 0 1px 0 color-mix(in srgb, rgba(255, 255, 255, 0.06) 100%, transparent) inset;
 }
 [data-theme="light"] .about-section .about-panel__aside .about-panel__gilmore {
-  background: var(--term-bg);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, rgba(232, 180, 212, 0.22) 100%, #fff) 0%,
+    var(--term-bg) 55%
+  );
+  border-color: color-mix(in srgb, #e8b4d4 45%, rgba(0, 0, 0, 0.08));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset;
 }
 .about-section .about-panel__gilmore-head {
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.38rem 0.48rem 0.34rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--term-border) 88%, transparent);
+  padding: 0.42rem 0.52rem 0.38rem;
+  border-bottom: 1px solid color-mix(in srgb, #e8b4d4 28%, var(--term-border) 72%);
   background: transparent;
 }
 [data-theme="light"] .about-section .about-panel__gilmore-head {
   background: transparent;
+  border-bottom-color: color-mix(in srgb, #e8b4d4 35%, rgba(0, 0, 0, 0.06));
 }
 .about-section .about-panel__gilmore-mark {
   display: flex;
@@ -872,13 +884,14 @@ body:has(> .terminal-window) .term-body {
   flex-shrink: 0;
   width: 1.95rem;
   height: 1.95rem;
-  border-radius: var(--radius-sm);
-  background: rgba(197, 134, 192, 0.18);
-  color: #c586c0;
+  border-radius: 999px;
+  background: color-mix(in srgb, rgba(232, 180, 212, 0.35) 100%, rgba(197, 134, 192, 0.2));
+  color: #d896c8;
+  box-shadow: 0 1px 2px color-mix(in srgb, rgba(197, 134, 192, 0.35) 100%, transparent);
 }
 [data-theme="light"] .about-section .about-panel__gilmore-mark {
-  background: rgba(197, 134, 192, 0.15);
-  color: #80589c;
+  background: color-mix(in srgb, rgba(232, 180, 212, 0.55) 100%, #f5e6f0);
+  color: #9b5a9a;
 }
 .about-section .about-panel__gilmore-head-text {
   min-width: 0;
@@ -894,10 +907,10 @@ body:has(> .terminal-window) .term-body {
   line-height: 1.25;
 }
 .about-section .about-panel__gilmore-body {
-  padding: 0.38rem 0.48rem 0.44rem;
+  padding: 0.42rem 0.52rem 0.48rem;
   display: flex;
   flex-direction: column;
-  gap: 0.32rem;
+  gap: 0.36rem;
 }
 .about-section .about-panel__gilmore-intro {
   margin: 0;
@@ -910,42 +923,99 @@ body:has(> .terminal-window) .term-body {
   font-weight: 600;
   color: var(--term-text);
 }
+.about-section .about-panel__gilmore-mast {
+  text-align: center;
+  padding: 0.55rem 0.42rem 0.52rem;
+  border-radius: 0.65rem;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, rgba(255, 232, 244, 0.14) 100%, transparent) 0%,
+    color-mix(in srgb, rgba(245, 228, 240, 0.08) 100%, transparent) 100%
+  );
+  border: 1px solid color-mix(in srgb, #f0cfe0 45%, var(--term-border) 55%);
+  box-shadow: 0 1px 0 color-mix(in srgb, rgba(255, 255, 255, 0.08) 100%, transparent) inset;
+}
+[data-theme="light"] .about-section .about-panel__gilmore-mast {
+  background: linear-gradient(180deg, #fffefb 0%, #fff5f9 100%);
+  border-color: color-mix(in srgb, #f5d0e4 55%, rgba(0, 0, 0, 0.06));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 6px 18px color-mix(in srgb, rgba(200, 120, 170, 0.08) 100%, transparent);
+}
+.about-section .about-panel__gilmore-mast-label {
+  margin: 0 0 0.42rem;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: color-mix(in srgb, #d896c8 85%, var(--term-muted) 15%);
+}
+[data-theme="light"] .about-section .about-panel__gilmore-mast-label {
+  color: #b565a4;
+}
+.about-section .about-panel__gilmore-mast-hed {
+  margin: 0 0 0.48rem;
+  font-size: clamp(0.65rem, 0.55vw + 0.52rem, 0.8125rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  color: var(--term-text);
+  text-wrap: balance;
+}
+.about-section .about-panel__gilmore-mast-hed cite {
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: color-mix(in srgb, #c76b9a 75%, var(--term-text) 25%);
+}
+[data-theme="light"] .about-section .about-panel__gilmore-mast-hed cite {
+  color: #a04586;
+}
+.about-section .about-panel__gilmore-mast-by {
+  margin: 0 0 0.12rem;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--term-muted);
+}
+.about-section .about-panel__gilmore-mast-date {
+  margin: 0;
+  font-size: 0.59375rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  color: var(--term-muted);
+}
+.about-section .about-panel__gilmore-card:hover .about-panel__gilmore-mast {
+  border-color: color-mix(in srgb, #e8a8cc 50%, var(--term-border) 50%);
+}
 .about-section .about-panel__gilmore-card {
   display: flex;
   flex-direction: column;
-  gap: 0.22rem;
-  padding: 0.34rem 0.42rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid color-mix(in srgb, var(--term-border) 90%, transparent);
-  background: color-mix(in srgb, var(--term-surface) 85%, transparent);
+  gap: 0.32rem;
+  padding: 0.38rem 0.4rem 0.44rem;
+  border-radius: 0.7rem;
+  border: 1px solid color-mix(in srgb, #e8b4d4 32%, var(--term-border) 68%);
+  background: color-mix(in srgb, var(--term-surface) 78%, rgba(245, 230, 240, 0.12));
   text-decoration: none;
   color: inherit;
-  transition: background 0.12s ease, border-color 0.12s ease;
+  transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
 }
 [data-theme="light"] .about-section .about-panel__gilmore-card {
-  background: color-mix(in srgb, var(--term-surface) 94%, #fff);
+  background: color-mix(in srgb, #fff 88%, rgba(245, 230, 240, 0.65));
+  border-color: color-mix(in srgb, #e8b4d4 40%, rgba(0, 0, 0, 0.06));
 }
 .about-section .about-panel__gilmore-card:hover {
   background: var(--vscode-list-hover);
-  border-color: rgba(197, 134, 192, 0.45);
+  border-color: color-mix(in srgb, #d896c8 55%, var(--term-border) 45%);
+  box-shadow: 0 2px 10px color-mix(in srgb, rgba(197, 134, 192, 0.15) 100%, transparent);
 }
 .about-section .about-panel__gilmore-card:focus-visible {
   outline: 2px solid var(--vscode-focus-border);
   outline-offset: 1px;
-}
-.about-section .about-panel__gilmore-card-title {
-  font-size: 10px;
-  font-weight: 500;
-  line-height: 1.38;
-  color: var(--term-link);
-}
-.about-section .about-panel__gilmore-card:hover .about-panel__gilmore-card-title {
-  color: var(--term-link-hover);
-}
-.about-section .about-panel__gilmore-card-title cite {
-  font-style: italic;
-  font-weight: 600;
-  color: inherit;
 }
 .about-section .about-panel__gilmore-card-meta {
   font-size: 9px;
