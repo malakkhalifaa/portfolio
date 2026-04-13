@@ -148,7 +148,7 @@
       } else {
         var typingPos = 0;
         var typingBuf = '';
-        var typingMax = 2600;
+        var typingMax = 4800;
         var typingMs = window.matchMedia('(max-width: 768px)').matches ? 96 : 64;
         function typingTick() {
           if (document.hidden) return;
