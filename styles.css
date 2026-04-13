@@ -3717,3 +3717,93 @@ body:has(> .terminal-window) .term-body {
     --webgl-overlay-opacity: 0.06;
   }
 }
+
+/* Fixed scroll companion cat (decorative; injected by script.js) */
+.scroll-cat {
+  position: fixed;
+  left: 0;
+  bottom: max(8px, env(safe-area-inset-bottom, 0px));
+  z-index: 85;
+  width: 58px;
+  height: 58px;
+  pointer-events: none;
+  overflow: visible;
+}
+.scroll-cat__track {
+  width: 58px;
+  height: 58px;
+  transform: translateX(var(--cat-x, 12px));
+  will-change: transform;
+  transition: transform 0.16s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.scroll-cat__bob {
+  width: 58px;
+  height: 58px;
+}
+.scroll-cat__svg {
+  display: block;
+  width: 58px;
+  height: 58px;
+  overflow: visible;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.4));
+  transform-origin: 50% 100%;
+  transition: transform 0.22s cubic-bezier(0.33, 1, 0.68, 1);
+}
+[data-theme="light"] .scroll-cat__svg {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.14));
+}
+.scroll-cat--flipped .scroll-cat__svg {
+  transform: scaleX(-1);
+}
+@keyframes scroll-cat-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.scroll-cat--walking .scroll-cat__bob {
+  animation: scroll-cat-bob 0.3s ease-in-out infinite;
+}
+.scroll-cat__tail {
+  transform-origin: 16px 26px;
+  transform-box: fill-box;
+}
+@keyframes scroll-cat-tail {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(12deg);
+  }
+}
+.scroll-cat--walking .scroll-cat__tail {
+  animation: scroll-cat-tail 0.5s ease-in-out infinite;
+}
+.scroll-cat__paw-l,
+.scroll-cat__paw-r {
+  transform-box: fill-box;
+}
+@keyframes scroll-cat-paw {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.scroll-cat--walking .scroll-cat__paw-l {
+  animation: scroll-cat-paw 0.26s ease-in-out infinite;
+}
+.scroll-cat--walking .scroll-cat__paw-r {
+  animation: scroll-cat-paw 0.26s ease-in-out 0.13s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-cat {
+    display: none !important;
+  }
+}
